@@ -1,20 +1,20 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
-import {useSelector} from 'react-redux';
+import React from 'react';
+import { Routes, Route, NavLink, Outlet } from 'react-router-dom'
 import { selectProductByName, selectProductById, selectProductByDiet } from '../features/products/productsSlice';
-
 function App() {
 
-const products = useSelector((state) => state.products);
-const milk = selectProductByDiet(products, {glutenfree: true, vegetarian: true, dairyfree: false});
+           
 
-const imie = milk.map((e)=> e.name);
-const zdanie = "koszyk zawiera " + imie.join(",");
-const diety = milk.diet;
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>{zdanie}</h2>
+    <nav>
+      <NavLink to="/" >Home</NavLink>
+      <NavLink to="/fridge" >Fridge</NavLink>
+      <NavLink to="/recipes" >Recipes</NavLink>
+      <NavLink to="/about" >About</NavLink>
+    </nav>
+    <Outlet />
+      <h1> hello world!</h1>
     </div>
   );
 }
