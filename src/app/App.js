@@ -7,14 +7,19 @@ function App() {
 
   return (
     <div>
-    <nav>
-      <NavLink to="/" >Home</NavLink>
-      <NavLink to="/fridge" >Fridge</NavLink>
-      <NavLink to="/recipes" >Recipes</NavLink>
-      <NavLink to="/about" >About</NavLink>
-    </nav>
-    <Outlet />
-      <h1> hello world!</h1>
+      <header>What are we eating?</header>
+      <nav>
+        <NavLink to="/" >Home</NavLink>
+        <NavLink to="/fridge" >Fridge</NavLink>
+        <NavLink to="/recipes" >Recipes</NavLink>
+        <NavLink to="/mealplanner" >Meal Planner</NavLink>
+      </nav>
+      <main>
+        <Outlet />
+      </main>
+      <footer>
+        <NavLink to="/about" >About</NavLink>
+      </footer>
     </div>
   );
 }

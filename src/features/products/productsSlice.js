@@ -6,10 +6,10 @@ const productsSlice = createSlice({
   name: 'products',
   initialState: initialProductsData,
   reducers: {
-    add: (state, action) => {
-        state.push(action.payload);
+    addProduct: (state, action) => {
+    state.push(JSON.parse(action.payload));
     },
-    remove: (state, action) => {
+    removeProduct: (state, action) => {
         return state.filter((element)=> element.id !== action.payload.id)
     }
   }
@@ -18,12 +18,12 @@ const productsSlice = createSlice({
 //Selectors:
 
 export const selectAllProducts = (state) => state.products;
-export const selectProductByName = (state, name) => state.filter((e)=> e.name.toLowerCase().includes(name.toLowerCase()));
-export const selectProductById = (state, id) => state.filter((e)=>e.id === id);
-export const selectProductByDiet = (state, diet) => state.filter((e) => e.diet.glutenfree === diet.glutenfree && e.diet.vegetarian === diet.vegetarian && e.diet.dairyfree === diet.dairyfree);
+export const selectProductByName = (state, name) => state.products.filter((e)=> e.name.toLowerCase().includes(name.toLowerCase()));
+export const selectProductById = (state, id) => state.products.filter((e)=>e.id === id);
+export const selectProductByDiet = (state, diet) => state.products.filter((e) => e.diet.glutenfree === diet.glutenfree && e.diet.vegetarian === diet.vegetarian && e.diet.dairyfree === diet.dairyfree);
 
 //Actions:
-export const {add, remove} = productsSlice.actions
+export const {addProduct, removeProduct} = productsSlice.actions
 
 //Reducer:
 export default productsSlice.reducer

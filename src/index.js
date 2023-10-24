@@ -9,6 +9,7 @@ import Fridge from './components/Fridge';
 import ProductsList from './components/ProductsList';
 import Recipes from './components/Recipes';
 import About from './components/About';
+import MealPlanner from './components/MealPlanner';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
                 <Route path='/fridge/productslist' element={<ProductsList />} />
               </Route>
               <Route path='/recipes' element={<Recipes />} />
+              <Route path='/mealplanner' element={<MealPlanner />} />
               <Route path='/about' element={<About />} />
               <Route path='*' element={<h1>Page Not Found</h1>} />
             </Route>  
