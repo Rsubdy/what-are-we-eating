@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { selectProductByName, selectProductById, selectProductByDiet } from '../features/products/productsSlice';
 function App() {
 

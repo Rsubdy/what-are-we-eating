@@ -10,6 +10,7 @@ import ProductsList from './components/ProductsList';
 import Recipes from './components/Recipes';
 import About from './components/About';
 import MealPlanner from './components/MealPlanner';
+import RecipeCreator from './components/RecipeCreator/RecipeCreator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,10 +19,12 @@ root.render(
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App />}>
-              <Route path='/fridge' element={<Fridge />}>
+              <Route path='/fridge' element={<Fridge />} >
                 <Route path='/fridge/productslist' element={<ProductsList />} />
               </Route>
-              <Route path='/recipes' element={<Recipes />} />
+              <Route path='/recipes' element={<Recipes />} >
+                <Route path='/recipes/newrecipe' element={<RecipeCreator />} />
+              </Route>
               <Route path='/mealplanner' element={<MealPlanner />} />
               <Route path='/about' element={<About />} />
               <Route path='*' element={<h1>Page Not Found</h1>} />
