@@ -11,4 +11,6 @@ const store = configureStore({
     }
 });
 
+
+export const func = () => 1;
 export default store;

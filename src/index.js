@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Outlet} from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import './index.css';
 import App from './app/App';
 import { Provider } from 'react-redux';
 import store from './app/store';
+import Hello from './components/Hello';
 import Fridge from './components/Fridge';
 import ProductsList from './components/ProductsList';
 import Recipes from './components/Recipes';
@@ -19,6 +20,7 @@ root.render(
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<App />}>
+              <Route path='/hello' element={<Hello />} />
               <Route path='/fridge' element={<Fridge />} >
                 <Route path='/fridge/productslist' element={<ProductsList />} />
               </Route>
