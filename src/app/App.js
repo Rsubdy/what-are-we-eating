@@ -1,11 +1,8 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom'
-import { selectProductByName, selectProductById, selectProductByDiet } from '../features/products/productsSlice';
+import { NavLink, Outlet } from 'react-router-dom';
 
 function App() {
-
            
-
   return (
     <div>
       <header>What are we eating?</header>

@@ -1,7 +1,7 @@
 import React from 'react'
-import { selectAllProducts } from '../features/products/productsSlice'
+import { selectAllProducts } from './productsSlice'
 import {useSelector} from 'react-redux';
-import ListedProduct from './ListedProduct/ListedProduct';
+import ListedProduct from '../../components/ListedProduct/ListedProduct';
 
 function ProductsList() {
 

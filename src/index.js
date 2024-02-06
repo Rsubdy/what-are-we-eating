@@ -6,11 +6,11 @@ import App from './app/App';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import Hello from './components/Hello';
-import Fridge from './components/Fridge';
-import ProductsList from './components/ProductsList';
+import Fridge from './features/fridge/Fridge';
+import ProductsList from './features/products/ProductsList';
 import Recipes from './components/Recipes';
 import About from './components/About';
-import MealPlanner from './components/MealPlanner';
+import MealPlanner from './features/MealPlanner';
 import RecipeCreator from './components/RecipeCreator/RecipeCreator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

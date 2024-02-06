@@ -14,7 +14,6 @@ function FridgeProduct({product}) {
 
     const handleRemoveFromFridge = () => {
         dispatch(fridgeSetAmount({id:id, amount: 1}));
-        dispatch(addProduct(JSON.stringify(product)));
         dispatch(removeFromFridge(product));
       }
     const handleIncrementAmount = () => {

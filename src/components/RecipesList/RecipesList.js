@@ -11,8 +11,8 @@ const allRecipes = useSelector(state=>state.recipes);
   return (
     <div>
       <h1>Recipes available from your products:</h1>
-        {allRecipes.map((e)=>{
-          return <DisplayedRecipe recipe={e} key={e.id} />
+        {allRecipes.map((recipe)=>{
+          return <DisplayedRecipe recipe={recipe} key={recipe.id} />
         })}
       </div>
   )

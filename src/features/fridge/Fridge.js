@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsList from './ProductsList';
+import ProductsList from '../products/ProductsList';
 import FridgeList from './FridgeList';
 
 function Fridge() {

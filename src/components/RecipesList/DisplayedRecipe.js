@@ -10,13 +10,13 @@ function DisplayedRecipe({recipe}) {
     //Getting products from the store by their id's to get names and information about diets accepting them
 
     const getProductsFromRecipesIngredients = (recipe) => {
-        const getIngredientById = (state, id) => state.find((e)=> e.id === id);
+        const getIngredientById = (state, id) => state.find((ingredient)=> ingredient.id === id);
         const arrayOfProducts = [];
-        ingredients.forEach((e) => {
-            const product = getIngredientById(products, e.id);
+        ingredients.forEach((ingredient) => {
+            const product = getIngredientById(products, ingredient.id);
             arrayOfProducts.push({
                 name: product.name,
-                amount: e.amount,
+                amount: ingredient.amount,
                 unit: product.unit,
                 diet: {
                     glutenfree: product.diet.glutenfree,
@@ -33,9 +33,9 @@ function DisplayedRecipe({recipe}) {
     
     //Assigning diet types to the recipe
     
-     const glutenfree = productsFromThisRecipe.every((e)=>e.diet.glutenfree === true);
-     const dairyfree = productsFromThisRecipe.every((e)=>e.diet.dairyfree === true);
-     const vegetarian = productsFromThisRecipe.every((e)=>e.diet.vegetarian === true);
+     const glutenfree = productsFromThisRecipe.every((product)=>product.diet.glutenfree === true);
+     const dairyfree = productsFromThisRecipe.every((product)=>product.diet.dairyfree === true);
+     const vegetarian = productsFromThisRecipe.every((product)=>product.diet.vegetarian === true);
     
     return (
       <div key={recipe.id}>

@@ -12,10 +12,9 @@ function ListedProduct({product}) {
 
     const handleAddToFridge = () => {
       dispatch(addToFridge(JSON.stringify(product)));
-      dispatch(removeProduct(product));
     }
     const handleDeleteFromDatabase = () => {
-      alert("This action will permanently delete product from database and can't be undone.")
+      alert("This will permanently delete product from database and can't be undone.")
       dispatch(removeProduct(product));
     }
 
