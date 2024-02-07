@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import DietForm from './DietForm';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getDietPreferences, setPreferences } from './dietPreferencesSlice';
 
 
 function DietSelection() {
-  
   const dispatch = useDispatch();
   const storePreferences = useSelector(getDietPreferences);
-
-  localStorage.getItem('preferences') === null ? localStorage.setItem('preferences', JSON.stringify(storePreferences)) : ;
-  let localStoragePreferences = JSON.parse(localStorage.getItem('preferences'));
+  const storedLocally = localStorage.getItem('preferences');
   
-  dispatch(setPreferences(JSON.parse(localStorage.getItem('preferences'))))
+  useEffect(()=>{
+    if (storedLocally !== null){
+      dispatch(setPreferences(JSON.parse(storedLocally)));
+    }
+  }, [dispatch, storedLocally])
+  
   return (
     <div>
-        <p>Select your food preferences. If you don't tick anything I'll assume you eat everything. No judging, food is food! Apologies to vegans and other preferences - I'll include your diets in the next update!</p>
-        <DietForm preferences={localStoragePreferences} storePreferences={storePreferences}/>
+        <p>Select your food preferences. If you don't tick anything I'll assume you eat everything. No judging, food is food! Alas in this demo version I've prepared only for 3 food preferences. Other diets could be easily introduced in the update!</p>
+        <DietForm preferences={storePreferences} />
     </div>
   )
 }

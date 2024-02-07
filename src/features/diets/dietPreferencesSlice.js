@@ -34,7 +34,7 @@ const dietPreferencesSlice= createSlice({
         },
         
         setPreferences: (state, action) => {
-            const dietsToExclude = action.payload.excludedDiets 
+            const dietsToExclude = action.payload.excludedDiets;
             state.excludedDiets = dietsToExclude;
             state.excludedProducts =  action.payload.excludedProducts;
             

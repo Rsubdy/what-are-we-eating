@@ -15,9 +15,8 @@ const [summary, setSummary] = useState('');
 
 // props:
 
-let storedPreferences = props.preferences;
-let storePreferences = props.storePreferences;
-let { excludedProducts } = storedPreferences;
+let storePreferences = props.preferences;
+let { excludedProducts } = storePreferences;
 
 //helper functions:
 
@@ -50,41 +49,46 @@ const handleDietExclusion = (dietName) => {
     }
 
     dispatch(toggleDietExclusion(constructDietPayload(dietName, productsToExcludeArray)));
-    }
+}
+
+const createSummary = () => {
+    let summary;
     
-const submitHandler = (event) => {
+    switch (excludedProducts.length) {
+        case 0 :
+
+        return 'Got it! So you don\'t exclude any food type.'
+        
+        case 1 :
+        summary = excludedProducts[0];
+        break;
+
+        case 2 :
+        summary = excludedProducts.join(' and ');
+        break;
+
+        default:
+        {let copyOfProducts = [...excludedProducts];
+        let lastItem = copyOfProducts.pop();
+        summary = copyOfProducts.join(', ') + ' and ' + lastItem;}
+    }
+    return 'Got it! So you don\'t eat: ' + summary + '.';
+}
+
+let submitHandler = (event) => {
         event.preventDefault();
         localStorage.setItem('preferences', JSON.stringify(storePreferences));
-        const createSummary = () => {
-            let summary;
-            
-            switch (excludedProducts.length) {
-                case 0 :
-                summary = excludedProducts[0];
-                break;
-    
-                case 1 :
-                summary = excludedProducts.join(' and ');
-                break;
-    
-                default:
-                {let lastItem = excludedProducts.pop();
-                summary = excludedProducts.join(', ') + ' and ' + lastItem;}
-            }
-            return "Got it! So you don't eat: " + summary + '.';
-        }
-    
         setSummary(createSummary());        
     }    
-
-
 
 
     return (
     <div>
         <form id='dietForm'>
             <p>My diet is:</p>
-            <DietButton dietName='glutenfree' storedPreferences={storedPreferences} onChange={handleDietExclusion}/>
+            <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+            <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+            <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <button type='submit' onClick={submitHandler}>That's it!</button>
         </form>
         {summary && (<div><h3>{summary}</h3><button onClick={()=> navigate('/fridge')}>Let's go to the fridge!</button></div>)}
