@@ -4,13 +4,14 @@ function DietButton(props) {
 
     const dietName = props.dietName;
     const handleDietExclusion = props.onClick;
+    const state = props.storePreferences[dietName];
 
   return (
     <div>
         <button onClick={(event) => {
             event.preventDefault();
             handleDietExclusion(dietName)}
-    }>{dietName}</button>
+    }>{dietName + state}</button>
     </div>
   )
 }

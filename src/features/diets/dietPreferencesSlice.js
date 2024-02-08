@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const dietPreferencesSlice= createSlice({
     name: "dietPreferences",
     initialState: {
-        excludedDiets: [],
+        excludedDiets: ['initial'],
         excludedProducts: [],
         glutenfree: false,
         vegetarian: false,
@@ -13,6 +13,7 @@ const dietPreferencesSlice= createSlice({
     reducers: {
         toggleDietExclusion: (state, action) => {
             let excludedDiet = action.payload.diet;
+            state.excludedDiets = state.excludedDiets.filter((element) => element !== 'initial');
             state[excludedDiet] = !state[excludedDiet];
             
             if (state[excludedDiet]){

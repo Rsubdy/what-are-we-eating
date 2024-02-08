@@ -20,7 +20,7 @@ let { excludedProducts } = storePreferences;
 
 //helper functions:
 
-const handleDietExclusion = (dietName) => {
+const handleDietExclusion = useCallback((dietName) => {
     
     const constructDietPayload = (dietName, productsToExclude) => {
         let payload = {
@@ -49,9 +49,9 @@ const handleDietExclusion = (dietName) => {
     }
 
     dispatch(toggleDietExclusion(constructDietPayload(dietName, productsToExcludeArray)));
-}
+}, [dispatch]);
 
-const createSummary = useCallback((storePreferences) => {
+const createSummary = useCallback(() => {
     
     let summary;
     
@@ -76,14 +76,10 @@ const createSummary = useCallback((storePreferences) => {
     return 'Got it! So you don\'t eat: ' + summary + '.';
 }, [excludedProducts]);
 
-let submitHandler = (event) => {
-        event.preventDefault();
-        localStorage.setItem('preferences', JSON.stringify(storePreferences));
-        setSummary(createSummary());        
-    }    
 
 useEffect(()=>{
     setSummary(createSummary(storePreferences));
+    localStorage.setItem('preferences', JSON.stringify(storePreferences));
 }, [setSummary, createSummary, storePreferences])
 
     return (
@@ -93,7 +89,6 @@ useEffect(()=>{
             <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-            <button type='submit' onClick={submitHandler}>That's it!</button>
         </form>
         {summary && (<div><h3>{summary}</h3><button onClick={()=> navigate('/fridge')}>Let's go to the fridge!</button></div>)}
     </div>
