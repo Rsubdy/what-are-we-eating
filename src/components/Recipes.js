@@ -23,3 +23,6 @@ function Recipes() {
 }
 
 export default Recipes
+
+
+// https://rapidapi.com/spoonacular/api/recipe-food-nutrition/

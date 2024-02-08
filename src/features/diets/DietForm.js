@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toggleDietExclusion } from './dietPreferencesSlice';
@@ -51,13 +51,14 @@ const handleDietExclusion = (dietName) => {
     dispatch(toggleDietExclusion(constructDietPayload(dietName, productsToExcludeArray)));
 }
 
-const createSummary = () => {
+const createSummary = useCallback((storePreferences) => {
+    
     let summary;
     
     switch (excludedProducts.length) {
         case 0 :
 
-        return 'Got it! So you don\'t exclude any food type.'
+        return 'You don\'t exclude any food type.'
         
         case 1 :
         summary = excludedProducts[0];
@@ -73,7 +74,7 @@ const createSummary = () => {
         summary = copyOfProducts.join(', ') + ' and ' + lastItem;}
     }
     return 'Got it! So you don\'t eat: ' + summary + '.';
-}
+}, [excludedProducts]);
 
 let submitHandler = (event) => {
         event.preventDefault();
@@ -81,6 +82,9 @@ let submitHandler = (event) => {
         setSummary(createSummary());        
     }    
 
+useEffect(()=>{
+    setSummary(createSummary(storePreferences));
+}, [setSummary, createSummary, storePreferences])
 
     return (
     <div>
