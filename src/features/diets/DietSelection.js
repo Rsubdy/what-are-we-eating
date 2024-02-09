@@ -15,7 +15,7 @@ useEffect(()=>{
   
   return (
     <div>
-        <p>Select your food preferences. If you don't tick anything I'll assume you eat everything. No judging, food is food! Alas in this demo version I've prepared only for 3 food preferences. Other diets could be easily introduced in the update!</p>
+        <p>Select your food preferences. This is the demo version with only 3 diets. Other could be easily introduced in the update!</p>
         <DietForm preferences={storePreferences} />
     </div>
   )
