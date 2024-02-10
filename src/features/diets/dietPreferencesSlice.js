@@ -8,7 +8,6 @@ const dietPreferencesSlice= createSlice({
         glutenfree: false,
         vegetarian: false,
         dairyfree: false,
-
     },
     reducers: {
         toggleDietExclusion: (state, action) => {

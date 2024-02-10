@@ -2,25 +2,36 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const fridgeSlice = createSlice({
     name: "fridge",
-    initialState: [],
+    initialState: {
+        fridgeproducts: []
+    },
     reducers: {
         addToFridge: (state, action) => {
-            state.push(JSON.parse(action.payload));
+            let productInFridge = state.fridgeproducts.find(product => product.name === JSON.parse(action.payload).name);
+            productInFridge ? productInFridge.amount++ : state.fridgeproducts.push(JSON.parse(action.payload));
+            localStorage.setItem('fridge', JSON.stringify(state));
         },
         removeFromFridge: (state, action) => {
-            return state.filter((productsInFridge)=> productsInFridge.id !== action.payload.id)
+            state.fridgeproducts.filter((productsInFridge)=> productsInFridge.id !== action.payload.id);
+            localStorage.setItem('fridge', JSON.stringify(state));
         },
         fridgeAmountIncrement: (state, action) => {
-            let product = state.find((productsInFridge)=> productsInFridge.id === action.payload.id);
+            let product = state.fridgeproducts.find((productsInFridge)=> productsInFridge.id === action.payload.id);
             product.amount++;
+            localStorage.setItem('fridge', JSON.stringify(state));
         },
         fridgeAmountDecrement: (state, action) => {
-            let product = state.find((productsInFridge)=> productsInFridge.id === action.payload.id);
+            let product = state.fridgeproducts.find((productsInFridge)=> productsInFridge.id === action.payload.id);
             product.amount--;
+            localStorage.setItem('fridge', JSON.stringify(state));
         },
         fridgeSetAmount: (state, action) => {
-            let product = state.find((productsInFridge)=> productsInFridge.id === action.payload.id);
+            let product = state.fridgeproducts.find((productsInFridge)=> productsInFridge.id === action.payload.id);
             product.amount = action.payload.amount;
+            localStorage.setItem('fridge', JSON.stringify(state));
+        },
+        getFridgeFromLocalstorage: (state, action) => {
+            state.fridgeproducts = action.payload.fridgeproducts;
         }
     },
        
@@ -35,7 +46,7 @@ export const selectFridgeProductsByDiet = (state, diet) => state.fridge.filter((
 
 //Actions: 
 
-export const { addToFridge, removeFromFridge, fridgeAmountIncrement, fridgeAmountDecrement, fridgeSetAmount } = fridgeSlice.actions
+export const { addToFridge, removeFromFridge, fridgeAmountIncrement, fridgeAmountDecrement, fridgeSetAmount, getFridgeFromLocalstorage } = fridgeSlice.actions
 
 //Reducer:
 export default fridgeSlice.reducer

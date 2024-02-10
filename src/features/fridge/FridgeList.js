@@ -1,16 +1,14 @@
-import React from 'react'
-import { selectAllFridgeProducts } from './fridgeSlice';
-import {useSelector} from 'react-redux';
+import {React } from 'react'
 import FridgeProduct from '../../components/FridgeProduct/FridgeProduct';
 
-function FridgeList() {
+function FridgeList(props) {
 
-const allFridgeProducts = useSelector(selectAllFridgeProducts);
+const allProducts = props.fridgeProducts; 
 
   return (
     <div>
       <h1>Products in the fridge:</h1>
-        {allFridgeProducts.map((product)=>{
+        {allProducts.map((product)=>{
           return <FridgeProduct product={product} key={product.id} />
         })}
       </div>
