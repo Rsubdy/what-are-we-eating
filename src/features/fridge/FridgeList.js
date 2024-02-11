@@ -3,7 +3,7 @@ import FridgeProduct from '../../components/FridgeProduct/FridgeProduct';
 
 function FridgeList(props) {
 
-const allProducts = props.fridgeProducts; 
+const allProducts = props.list; 
 
   return (
     <div>

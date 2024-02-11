@@ -10,7 +10,9 @@ function DietSelection() {
   let storedLocally = localStorage.getItem('preferences');
   
 useEffect(()=>{
-    (storePreferences.excludedDiets[0] === 'initial' && storedLocally !== null ) && dispatch(setPreferences(JSON.parse(storedLocally)));
+    if(storePreferences.excludedDiets[0] === 'initial' && storedLocally !== null){
+      dispatch(setPreferences(JSON.parse(storedLocally)))
+    }
   }, [dispatch, storedLocally, storePreferences])
   
   return (
