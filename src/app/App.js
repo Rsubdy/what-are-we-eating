@@ -7,7 +7,7 @@ function App() {
     <div>
       <header>What are we eating?</header>
       <nav>
-        <NavLink to="/hello" >Home</NavLink>
+        <NavLink to="/" >Home</NavLink>
         <NavLink to="/fridge" >Fridge</NavLink>
         <NavLink to="/recipes" >Recipes</NavLink>
         <NavLink to="/mealplanner" >Meal Planner</NavLink>

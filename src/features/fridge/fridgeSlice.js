@@ -32,6 +32,10 @@ const fridgeSlice = createSlice({
         },
         getFridgeFromLocalstorage: (state, action) => {
             state.list = action.payload;
+        },
+        clearFridge: (state, action) => {
+            state.list = action.payload;
+            localStorage.setItem('fridge', JSON.stringify(state.list));
         }
     },
        
@@ -46,7 +50,7 @@ export const selectFridgeProductsByDiet = (state, diet) => state.fridge.list.fil
 
 //Actions: 
 
-export const { addToFridge, removeFromFridge, fridgeAmountIncrement, fridgeAmountDecrement, fridgeSetAmount, getFridgeFromLocalstorage } = fridgeSlice.actions
+export const { addToFridge, removeFromFridge, fridgeAmountIncrement, fridgeAmountDecrement, fridgeSetAmount, getFridgeFromLocalstorage, clearFridge } = fridgeSlice.actions
 
 //Reducer:
 export default fridgeSlice.reducer

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import ProductsList from '../products/ProductsList';
 import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFridgeFromLocalstorage, selectAllFridgeProducts } from './fridgeSlice';
+import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
 
 
 function Fridge() {
@@ -10,6 +10,7 @@ function Fridge() {
 let allFridgeProducts = useSelector(selectAllFridgeProducts);
 const localStorageFridge = localStorage.getItem('fridge');
 const dispatch = useDispatch();
+const clear = clearFridge;
 
 useEffect(()=> {
   if (localStorageFridge !== null) {
@@ -25,7 +26,7 @@ useEffect(()=> {
         <ProductsList />
       </aside>
       <main>
-        <FridgeList list={allFridgeProducts} />
+        <FridgeList list={allFridgeProducts} clear={clear}/>
       </main>
     </div>
   )
