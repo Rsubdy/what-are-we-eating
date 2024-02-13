@@ -36,7 +36,7 @@ const fridgeSlice = createSlice({
         clearFridge: (state, action) => {
             state.list = action.payload;
             localStorage.setItem('fridge', JSON.stringify(state.list));
-        }
+        },
     },
        
 })

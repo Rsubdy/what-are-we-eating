@@ -44,6 +44,14 @@ const dietPreferencesSlice= createSlice({
                 state.vegetarian = dietsToExclude.includes('vegetarian');
             }
                 
+        },
+
+        clearPreferences: (state) => {
+            state.excludedDiets = ['initial'];
+            state.excludedProducts = [];
+            state.glutenfree = false;
+            state.vegetarian = false;
+            state.dairyfree = false;
         }
         
     }  
@@ -56,5 +64,5 @@ export const getExclusions = (state) => state.dietPreferencesSlice.exclusions;
 export const getExcludedproducts = (state) => state.dietPreferencesSlice.excludedProducts;
 
 
-export const { toggleDietExclusion, setPreferences } = dietPreferencesSlice.actions
+export const { toggleDietExclusion, setPreferences, clearPreferences} = dietPreferencesSlice.actions
 export default dietPreferencesSlice.reducer

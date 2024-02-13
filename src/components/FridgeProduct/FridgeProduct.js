@@ -15,13 +15,15 @@ function FridgeProduct({product}) {
         dispatch(fridgeSetAmount({id:id, amount: 1}));
         dispatch(removeFromFridge(product));
       }
-    const handleIncrementAmount = () => {
-        dispatch(fridgeAmountIncrement(product));
-    }
-    const handleDecrementAmount = () => {
-        amount === 1 ? handleRemoveFromFridge() : 
-        dispatch(fridgeAmountDecrement(product));
-    }
+   
+   //for Further development:
+      // const handleIncrementAmount = () => {
+    //     dispatch(fridgeAmountIncrement(product));
+    // }
+    // const handleDecrementAmount = () => {
+    //     amount === 1 ? handleRemoveFromFridge() : 
+    //     dispatch(fridgeAmountDecrement(product));
+    // }
 
     
       return (
@@ -31,9 +33,9 @@ function FridgeProduct({product}) {
           {diet.glutenfree === true && <img src='../../img/glutenFree.jpg' alt="glutenfree product" />}
           {diet.vegetarian === true && <img src='../../img/vegetarian.jpg' alt="vegetarian product" />}
           {diet.dairyfree === true && <img src='../../img/dairyFree.jpg' alt="dairyfree product" />}
-          <h4>Amount: {amount}</h4>
+          {/* <h4>Amount: {amount}</h4>
           <button onClick={handleIncrementAmount}>+</button>
-          <button onClick={handleDecrementAmount}>-</button>
+          <button onClick={handleDecrementAmount}>-</button> */}
           <button onClick={handleRemoveFromFridge}>Remove</button>
           
       </div>

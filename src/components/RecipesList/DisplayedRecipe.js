@@ -48,8 +48,7 @@ function DisplayedRecipe({recipe}) {
           <p>{preparation.slice(0,50)+"..."}</p>
           <h4>Ingredients:</h4>
           <ul>
-            {ingredients.amount}
-            {productsFromThisRecipe.map((e) => <li key={e.id}>{e.name}, {e.amount} {e.amount < 1 ? e.unit : e.unit+"s"} </li>)}
+            {productsFromThisRecipe.map((e) => <li key={e.id}>{e.name}</li>)}
           </ul>
           <button>Show more...</button>
 

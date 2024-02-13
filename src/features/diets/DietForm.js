@@ -85,7 +85,7 @@ useEffect(()=>{
     return (
     <div>
         <form id='dietForm'>
-            <p>My diet is:</p>
+            <p>Your diet is:</p>
             <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
