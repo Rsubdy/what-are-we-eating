@@ -1,8 +1,13 @@
 import React from 'react'
 
-function ApiRecipe() {
+function ApiRecipe(props) {
+
+    const recipe = props.recipe;
+    
   return (
-    <div>ApiRecipe</div>
+    <div>
+        <h2>{recipe}</h2>
+    </div>
   )
 }
 
