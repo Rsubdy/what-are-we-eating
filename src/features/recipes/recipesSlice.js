@@ -16,9 +16,12 @@ const recipesSlice= createSlice({
       },
       addApiRecipe: (state, action) => {
         state.apiRecipes = action.payload;
+      },
+      clearApiRecipes: (state) => {
+        state.apiRecipes = [];
       }
     }
-})
+  })
 
 // Selectors: 
 export const selectAllRecipes = (state) => state.recipes.localRecipes;
@@ -27,5 +30,5 @@ export const selectRecipeByName = (state, name) => state.recipes.localRecipes.fi
 export const selectAllApiRecipes = (state) => state.recipes.apiRecipes;
 
 // Actions: 
-export const { addRecipe, getRecipeById, addApiRecipe} = recipesSlice.actions
+export const { addRecipe, getRecipeById, addApiRecipe, clearApiRecipes} = recipesSlice.actions
 export default recipesSlice.reducer

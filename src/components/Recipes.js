@@ -18,8 +18,8 @@ function Recipes() {
   const [apiRecipesLoaded, setApiRecipesLoaded] = useState(false);
   const [headline, setHeadline] = useState();
   const allApiRecipes = useSelector(selectAllApiRecipes);
-  
-  
+  const [dietPreferences, setDietPreferences] = useState();
+  let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
   //helper functions: 
 
   //selecting ingredients for fetching from public API:
@@ -39,10 +39,11 @@ function Recipes() {
       if (ingredients.length === 0) {
         setHeadline('No products in your fridge!');
         throw new Error('No products in your fridge!')} else {
-          let appID = 'dea6581f'
-          let apiKey = '513e64bd34b3c29b478441b9681dd34e'
-          let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label`
-
+          let appID = 'dea6581f';
+          let apiKey = '513e64bd34b3c29b478441b9681dd34e';
+          let diets;
+          let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
+          dietPreferences !== undefined && (url += '&health='+dietPreferences.join('&health='));
           const response = await fetch(url);
           let payload = [];
           if (response.ok){
@@ -50,11 +51,17 @@ function Recipes() {
             let json = await response.json();
             let recipesArray = await json.hits;
             for (let i=0; i<5; i++){
-              payload.push(await recipesArray[i].recipe.label)
+              let newRecipe = {
+                title: await recipesArray[i].recipe.label,
+                ingredients: await recipesArray[i].recipe.ingredientLines,
+                link: await recipesArray[i].recipe.url
+              }
+              payload.push(newRecipe);
             }
+            localStorage.setItem('recipesFromApi', JSON.stringify(payload));
             dispatch(addApiRecipe(payload));
             setHeadline('Here are some inspirations from the web! You may not have all the ingredients, but you certainly have some!');
-            localStorage.setItem('recipesFromApi', payload);
+            
           } else {
             throw new Error('Error while getting results!')
           }
@@ -91,13 +98,23 @@ useEffect(()=> {
   dispatch(getFridgeFromLocalstorage(payload))};
 }, [dispatch, localStorageFridge])
 
+useEffect(()=> {
+  if (localStorageApiRecipes !== null) {
+  let payload = JSON.parse(localStorageApiRecipes);
+  setRecipesFromApi(payload);
+  setApiRecipesLoaded(true);} else {
+    setRecipesFromApi();
+    setApiRecipesLoaded(false);
+  }
+}, [dispatch, localStorageFridge, localStorageApiRecipes, allFridgeProducts])
+
 // loading list of recipes if fetching from API was succesfull
 useEffect(()=>{
   if (allApiRecipes.length !== 0){
   setRecipesFromApi(allApiRecipes);
   setApiRecipesLoaded(true);
 }
-}, [recipesFromApi, allApiRecipes])
+}, [recipesFromApi, allApiRecipes, allFridgeProducts])
 
   return (
     <div>

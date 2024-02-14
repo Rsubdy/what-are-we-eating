@@ -2,11 +2,14 @@ import React from 'react'
 
 function ApiRecipe(props) {
 
-    const recipe = props.recipe;
-    
+    const {title, ingredients, link} = props.recipe;
+
   return (
     <div>
-        <h2>{recipe}</h2>
+        <h2>{title}</h2>
+        <h3>Ingredients:</h3> {ingredients.map(ingredient => <p key={ingredient.id}>{ingredient}</p>)}
+        <h4><a href={link} target="blank">Go to the full recipe!</a></h4>
+        <hr />
     </div>
   )
 }
