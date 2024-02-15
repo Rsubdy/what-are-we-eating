@@ -7,13 +7,13 @@ import { getDietPreferences, setPreferences } from './dietPreferencesSlice';
 function DietSelection() {
   const dispatch = useDispatch();
   const storePreferences = useSelector(getDietPreferences);
-  let storedLocally = localStorage.getItem('preferences');
+//   let storedLocally = localStorage.getItem('preferences');
   
-useEffect(()=>{
-    if(storePreferences.excludedDiets[0] === 'initial' && storedLocally !== null){
-      dispatch(setPreferences(JSON.parse(storedLocally)))
-    }
-  }, [dispatch, storedLocally, storePreferences])
+// useEffect(()=>{
+//     if(storePreferences.excludedDiets[0] === 'initial' && storedLocally !== null){
+//       dispatch(setPreferences(JSON.parse(storedLocally)))
+//     }
+//   }, [dispatch, storedLocally, storePreferences])
   
   return (
     <div>

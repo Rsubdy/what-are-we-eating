@@ -4,6 +4,7 @@ import RecipesList from './RecipesList/RecipesList';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllRecipes, selectAllApiRecipes, addApiRecipe} from '../features/recipes/recipesSlice';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/fridge/fridgeSlice';
+import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';
 
 function Recipes() {
@@ -18,7 +19,8 @@ function Recipes() {
   const [apiRecipesLoaded, setApiRecipesLoaded] = useState(false);
   const [headline, setHeadline] = useState();
   const allApiRecipes = useSelector(selectAllApiRecipes);
-  const [dietPreferences, setDietPreferences] = useState();
+  let excludedDiets = useSelector(getExcludedDiets);
+  const [dietPreferences, setDietPreferences] = useState(excludedDiets);
   let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
   //helper functions: 
 
@@ -35,13 +37,13 @@ function Recipes() {
 
   const handleFetchRecipes = async () => {
     try {
+      setDietPreferences(excludedDiets);
       let ingredients = fridgeProductsQuery();
       if (ingredients.length === 0) {
         setHeadline('No products in your fridge!');
         throw new Error('No products in your fridge!')} else {
           let appID = 'dea6581f';
           let apiKey = '513e64bd34b3c29b478441b9681dd34e';
-          let diets;
           let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
           dietPreferences !== undefined && (url += '&health='+dietPreferences.join('&health='));
           const response = await fetch(url);

@@ -16,23 +16,31 @@ const [summary, setSummary] = useState('');
 // props:
 
 let storePreferences = props.preferences;
-let { excludedProducts } = storePreferences;
+let excludedProducts = storePreferences.excludedProducts;
 
 //helper functions:
 
 const handleDietExclusion = useCallback((dietName) => {
     
-    const constructDietPayload = (dietName, productsToExclude) => {
-        let payload = {
-            diet: dietName,
-            excludedDiet: dietName,
-            excludedProducts: productsToExclude
-        }
+    const constructDietPayload = (dietName) => {
     
-    return payload;
+    let dietNameForQuery = '';
+    
+    switch (dietName){
+        case 'glutenfree' :
+        dietNameForQuery = 'gluten-free';
+        break;
+        case 'dairyfree' :
+        dietNameForQuery = 'dairy-free';
+        break;
+        case 'vegetarian' :
+        dietNameForQuery = 'vegetarian';
+        break;
+        default:
+        break;
     }
     
-    let productsToExcludeArray;
+    let productsToExcludeArray = [];
 
     switch (dietName) {
         case 'glutenfree':
@@ -45,10 +53,19 @@ const handleDietExclusion = useCallback((dietName) => {
         productsToExcludeArray = ['meat', 'eggs'];
         break;
         default:
-            return;
+        break;
     }
 
-    dispatch(toggleDietExclusion(constructDietPayload(dietName, productsToExcludeArray)));
+    let payload = {
+        diet: dietName,
+        excludedDiet: dietNameForQuery,
+        excludedProducts: productsToExcludeArray
+    }
+
+return payload;
+}
+
+    dispatch(toggleDietExclusion(constructDietPayload(dietName)));
 }, [dispatch]);
 
 const createSummary = useCallback(() => {
@@ -79,7 +96,7 @@ const createSummary = useCallback(() => {
 
 useEffect(()=>{
     setSummary(createSummary(storePreferences));
-    localStorage.setItem('preferences', JSON.stringify(storePreferences));
+    // localStorage.setItem('preferences', JSON.stringify(storePreferences));
 }, [setSummary, createSummary, storePreferences])
 
     return (
