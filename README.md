@@ -12,7 +12,7 @@ To avoid losing information on reloads, the list of products in the fridge and l
 
 ## Technology used
 
-* The app is entirely build in **React.js** and utilizes **Redux** library for state management.
+* The app is entirely build in **React.js** and utilizes **React Router** for routing and **Redux** for state management.
 * The external recipes come from [Edamam Recipes API](https://www.edamam.com/) on free "Developer plan" that enables **up to 10 queries per minute**.
 
 * The styling is applied with the **Bootstrap** library.
