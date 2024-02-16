@@ -20,11 +20,39 @@ function Recipes() {
   const [headline, setHeadline] = useState();
   const allApiRecipes = useSelector(selectAllApiRecipes);
   let excludedDiets = useSelector(getExcludedDiets);
-  const [dietPreferences, setDietPreferences] = useState(excludedDiets);
   let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
   //helper functions: 
 
-  //selecting ingredients for fetching from public API:
+// rewriting diet names for query convention:
+
+const rewriteDietNamesForQuery = (excludedDiets) => {
+
+  let dietNamesForQuery = [];
+    
+for (let name of excludedDiets){
+
+  switch (name){
+    case 'glutenfree' :
+    dietNamesForQuery.filter(name => name !== 'glutenfree');
+    dietNamesForQuery.push('gluten-free');
+    break;
+    case 'dairyfree' :
+    dietNamesForQuery.filter(name => name !== 'dairyfree');
+    dietNamesForQuery.push('dairy-free');
+    break;
+    case 'vegetarian' :
+    dietNamesForQuery.push('vegetarian');
+    break;
+    default:
+    dietNamesForQuery = [];
+    break;
+}}
+return dietNamesForQuery
+}
+
+const [dietPreferences, setDietPreferences] = useState(rewriteDietNamesForQuery(excludedDiets));
+  
+//selecting ingredients for fetching from public API:
   const fridgeProductsQuery = () => {
     let productsNamesArray = [];
     for (let product of allFridgeProducts){
@@ -36,16 +64,19 @@ function Recipes() {
   //fetching recipes from public API:
 
   const handleFetchRecipes = async () => {
+    
     try {
-      setDietPreferences(excludedDiets);
       let ingredients = fridgeProductsQuery();
       if (ingredients.length === 0) {
         setHeadline('No products in your fridge!');
-        throw new Error('No products in your fridge!')} else {
+        throw new Error('No products in your fridge!')}
+        
+        else {
           let appID = 'dea6581f';
           let apiKey = '513e64bd34b3c29b478441b9681dd34e';
           let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
           dietPreferences !== undefined && (url += '&health='+dietPreferences.join('&health='));
+          alert(url);
           const response = await fetch(url);
           let payload = [];
           if (response.ok){
@@ -65,7 +96,7 @@ function Recipes() {
             setHeadline('Here are some inspirations from the web! You may not have all the ingredients, but you certainly have some!');
             
           } else {
-            throw new Error('Error while getting results!')
+            throw new Error('Error while getting results!' + Error.message)
           }
         }
     } catch (error) {

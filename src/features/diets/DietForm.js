@@ -24,22 +24,6 @@ const handleDietExclusion = useCallback((dietName) => {
     
     const constructDietPayload = (dietName) => {
     
-    let dietNameForQuery = '';
-    
-    switch (dietName){
-        case 'glutenfree' :
-        dietNameForQuery = 'gluten-free';
-        break;
-        case 'dairyfree' :
-        dietNameForQuery = 'dairy-free';
-        break;
-        case 'vegetarian' :
-        dietNameForQuery = 'vegetarian';
-        break;
-        default:
-        break;
-    }
-    
     let productsToExcludeArray = [];
 
     switch (dietName) {
@@ -58,7 +42,7 @@ const handleDietExclusion = useCallback((dietName) => {
 
     let payload = {
         diet: dietName,
-        excludedDiet: dietNameForQuery,
+        excludedDiet: dietName,
         excludedProducts: productsToExcludeArray
     }
 
