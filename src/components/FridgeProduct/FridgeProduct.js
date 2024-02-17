@@ -1,12 +1,12 @@
 import {React} from 'react'
 import {useDispatch} from 'react-redux';
-import { fridgeAmountDecrement, fridgeAmountIncrement, removeFromFridge, fridgeSetAmount } from '../../features/fridge/fridgeSlice';
-import { addProduct } from '../../features/products/productsSlice';
+import { removeFromFridge, fridgeSetAmount } from '../../features/fridge/fridgeSlice';
+
 
 function FridgeProduct({product}) {
     
     
-    let {name, image, diet, amount, id} = product;
+    let {name, image, diet, id} = product;
     const dispatch = useDispatch();
 
     //Button handlers:

@@ -10,6 +10,9 @@ initialProductsData.push(JSON.stringify(new Product('Wheat flour', './flour.jpg'
 initialProductsData.push(JSON.stringify(new Product('Ham', './ham.jpg', 'gram', {glutenfree: true, vegetarian: false, dairyfree: true})));
 initialProductsData.push(JSON.stringify(new Product('Wheat bread', './bread.jpg', 'item', {glutenfree: false, vegetarian: true, dairyfree: true})));
 initialProductsData.push(JSON.stringify(new Product('Butter', './butter.jpg', 'gram', {glutenfree: true, vegetarian: true, dairyfree: false})));
-
+initialProductsData.push(JSON.stringify(new Product('Garlic', './garlic.jpg', 'gram', {glutenfree: true, vegetarian: true, dairyfree: true})));
+initialProductsData.push(JSON.stringify(new Product('Lentil', './lentil.jpg', 'gram', {glutenfree: true, vegetarian: true, dairyfree: true})));
+initialProductsData.push(JSON.stringify(new Product('White rice', './whiteRice.jpg', 'gram', {glutenfree: true, vegetarian: true, dairyfree: true})));
+initialProductsData.push(JSON.stringify(new Product('Tofu', './tofu.jpg', 'gram', {glutenfree: true, vegetarian: true, dairyfree: true})));
 export default initialProductsData = initialProductsData.map((e)=> JSON.parse(e));
 

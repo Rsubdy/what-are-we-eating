@@ -4,7 +4,6 @@ import ApiRecipe from './ApiRecipe'
 function RecipesFromApi(props) {
   
     const recipes = props.recipes;
-
     return (
     <div>
         {recipes.map((recipe) => {

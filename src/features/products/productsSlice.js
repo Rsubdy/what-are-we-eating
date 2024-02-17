@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import initialProductsData from './initialProductsData';
 
-
 const productsSlice = createSlice({
   name: 'products',
   initialState: initialProductsData,
@@ -20,8 +19,32 @@ const productsSlice = createSlice({
 export const selectAllProducts = (state) => state.products;
 export const selectProductByName = (state, name) => state.products.filter((e)=> e.name.toLowerCase().includes(name.toLowerCase()));
 export const selectProductById = (state, id) => state.products.find((e)=>e.id === id);
-export const selectProductByDiet = (state, diet) => state.products.filter((e) => e.diet.glutenfree === diet.glutenfree && e.diet.vegetarian === diet.vegetarian && e.diet.dairyfree === diet.dairyfree);
+export const selectProductsByDietPreferences = (state) => {
+  
+  let allProducts = state.products;
+  let productsToDisplay = [];
 
+  let excludedDiets = state.dietPreferences.excludedDiets;
+  
+  let checkDiets = () => {
+    let productsToTest = [...allProducts];
+    let result = [];
+
+    for (let product of productsToTest){
+    if (excludedDiets.every(diet => product.diet[diet])){
+    result.push(product);
+    productsToTest.unshift();
+  } 
+
+  }
+    return result
+  }
+  
+  productsToDisplay = excludedDiets.length === 0 ? allProducts : checkDiets();
+  
+  return productsToDisplay;
+}
+  
 //Actions:
 export const {addProduct, removeProduct} = productsSlice.actions
 

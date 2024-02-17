@@ -1,11 +1,12 @@
 import React from 'react'
-import { selectAllProducts } from './productsSlice'
+import { selectProductsByDietPreferences } from './productsSlice'
 import {useSelector} from 'react-redux';
 import ListedProduct from '../../components/ListedProduct/ListedProduct';
 
 function ProductsList() {
 
-const allProducts = useSelector(selectAllProducts);
+  
+  const allProducts = useSelector(selectProductsByDietPreferences);
 
   return (
     <div>

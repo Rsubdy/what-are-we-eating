@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate, Outlet} from 'react-router-dom'
+import {Outlet} from 'react-router-dom'
 import RecipesList from './RecipesList/RecipesList';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllRecipes, selectAllApiRecipes, addApiRecipe} from '../features/recipes/recipesSlice';
+import { selectAllRecipes, selectAllApiRecipes, addApiRecipe, clearApiRecipes} from '../features/recipes/recipesSlice';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/fridge/fridgeSlice';
 import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';
 
 function Recipes() {
   
-  const navigate = useNavigate();
+  
   const allRecipes = useSelector(selectAllRecipes);
   const allFridgeProducts = useSelector(selectAllFridgeProducts);
   const localStorageFridge = localStorage.getItem('fridge');
@@ -50,7 +50,7 @@ for (let name of excludedDiets){
 return dietNamesForQuery
 }
 
-const [dietPreferences, setDietPreferences] = useState(rewriteDietNamesForQuery(excludedDiets));
+const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
   
 //selecting ingredients for fetching from public API:
   const fridgeProductsQuery = () => {
@@ -75,7 +75,7 @@ const [dietPreferences, setDietPreferences] = useState(rewriteDietNamesForQuery(
           let appID = 'dea6581f';
           let apiKey = '513e64bd34b3c29b478441b9681dd34e';
           let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
-          dietPreferences !== undefined && (url += '&health='+dietPreferences.join('&health='));
+          dietPreferences.length !== 0 && (url += '&health='+dietPreferences.join('&health='));
           alert(url);
           const response = await fetch(url);
           let payload = [];
@@ -96,7 +96,7 @@ const [dietPreferences, setDietPreferences] = useState(rewriteDietNamesForQuery(
             setHeadline('Here are some inspirations from the web! You may not have all the ingredients, but you certainly have some!');
             
           } else {
-            throw new Error('Error while getting results!' + Error.message)
+            throw new Error('Error while getting results!')
           }
         }
     } catch (error) {
@@ -146,6 +146,9 @@ useEffect(()=>{
   if (allApiRecipes.length !== 0){
   setRecipesFromApi(allApiRecipes);
   setApiRecipesLoaded(true);
+} else {
+  setApiRecipesLoaded(false);
+  setHeadline();
 }
 }, [recipesFromApi, allApiRecipes, allFridgeProducts])
 
@@ -159,8 +162,7 @@ useEffect(()=>{
       </main>
       <aside>
         {<div>
-          <h3>Need more inspiration based on your fridge products?</h3>
-          {headline}
+          {headline !== null ? headline : <h3>Need more inspiration based on your fridge products?</h3>}
           {apiRecipesLoaded ? (<div><RecipesFromApi recipes={recipesFromApi}/></div>) : <button onClick={()=>handleFetchRecipes()}>Get more recipes from the web!</button>}
         <Outlet />
         </div>}
@@ -170,6 +172,3 @@ useEffect(()=>{
 }
 
 export default Recipes
-
-
-// https://rapidapi.com/spoonacular/api/recipe-food-nutrition/

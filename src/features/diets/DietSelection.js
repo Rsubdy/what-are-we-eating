@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DietForm from './DietForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { getDietPreferences, setPreferences } from './dietPreferencesSlice';
+import { useSelector } from 'react-redux';
+import { getDietPreferences } from './dietPreferencesSlice';
 
 
 function DietSelection() {
-  const dispatch = useDispatch();
   const storePreferences = useSelector(getDietPreferences);
 //   let storedLocally = localStorage.getItem('preferences');
   
