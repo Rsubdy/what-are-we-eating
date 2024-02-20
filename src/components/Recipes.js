@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Outlet} from 'react-router-dom'
 import RecipesList from './RecipesList/RecipesList';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllRecipes, selectAllApiRecipes, addApiRecipe, clearApiRecipes} from '../features/recipes/recipesSlice';
+import { selectAllRecipes, selectAllApiRecipes, addApiRecipe} from '../features/recipes/recipesSlice';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/fridge/fridgeSlice';
 import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';

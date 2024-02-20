@@ -12,6 +12,7 @@ import Recipes from './components/Recipes';
 import About from './components/About';
 import MealPlanner from './features/MealPlanner';
 import RecipeCreator from './components/RecipeCreator/RecipeCreator';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
