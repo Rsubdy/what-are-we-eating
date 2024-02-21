@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toggleDietExclusion } from './dietPreferencesSlice';
 import DietButton from '../../components/DietButton/DietButton';
-
+import { ToggleButtonGroup, Button, Container } from 'react-bootstrap';
 
 function DietForm(props) {
 
@@ -87,11 +87,14 @@ useEffect(()=>{
     <div>
         <form id='dietForm'>
             <p>Your diet is:</p>
+
+        <ToggleButtonGroup type="checkbox">
             <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
             <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+        </ToggleButtonGroup>
         </form>
-        {summary && (<div><h3>{summary}</h3><button onClick={()=> navigate('/fridge')}>Let's go to the fridge!</button></div>)}
+        {summary && (<Container ><p className="text fw-bold">{summary}</p><Button variant="danger text fw-bold" onClick={()=> navigate('/fridge')}>Let's go to the fridge!</Button></Container>)}
     </div>
   )
 }

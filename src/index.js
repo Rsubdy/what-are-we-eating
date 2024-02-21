@@ -10,11 +10,12 @@ import Fridge from './features/fridge/Fridge';
 import ProductsList from './features/products/ProductsList';
 import Recipes from './components/Recipes';
 import About from './components/About';
-import MealPlanner from './features/MealPlanner';
 import RecipeCreator from './components/RecipeCreator/RecipeCreator';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   <React.StrictMode>
       <Provider store={store}>
@@ -28,7 +29,6 @@ root.render(
               <Route path='/recipes' element={<Recipes />} >
                 <Route path='/recipes/newrecipe' element={<RecipeCreator />} />
               </Route>
-              <Route path='/mealplanner' element={<MealPlanner />} />
               <Route path='/about' element={<About />} />
               <Route path='*' element={<h1>Page Not Found</h1>} />
             </Route>  

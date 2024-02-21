@@ -2,6 +2,7 @@ import React from 'react';
 import DietForm from './DietForm';
 import { useSelector } from 'react-redux';
 import { getDietPreferences } from './dietPreferencesSlice';
+import { Container, Row, Col, Button, Popover, PopoverContent, OverlayTrigger } from 'react-bootstrap';
 
 
 function DietSelection() {
@@ -15,10 +16,20 @@ function DietSelection() {
 //   }, [dispatch, storedLocally, storePreferences])
   
   return (
-    <div>
-        <p>Select your food preferences. This is the demo version with only 3 diets. Other could be easily introduced in the update!</p>
+    <Container className="container d-flex justify-content-center">
+      <Row>
+        <h2>Select your food preferences:</h2>
+        <OverlayTrigger trigger="click" placement="right" overlay="{dietDemoInfo}"><Button variant="button-sm button-info">?</Button></OverlayTrigger>
+        <Popover id="dietInfos">
+        <Popover.Header as="h3">This is only a portfolio project with few diets.</Popover.Header>
+          <Popover.Body>
+            Other diet preferences could be easily introduced in the update!
+          </Popover.Body>
+          </Popover>
+        
         <DietForm preferences={storePreferences} />
-    </div>
+      </Row>
+    </Container>
   )
 }
 
