@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toggleDietExclusion } from './dietPreferencesSlice';
 import DietButton from '../../components/DietButton/DietButton';
-import { ToggleButtonGroup, Button, Container } from 'react-bootstrap';
+import { ToggleButtonGroup, Button, Container, Popover, OverlayTrigger, Row } from 'react-bootstrap';
 
 function DietForm(props) {
 
@@ -83,19 +83,33 @@ useEffect(()=>{
     // localStorage.setItem('preferences', JSON.stringify(storePreferences));
 }, [setSummary, createSummary, storePreferences])
 
-    return (
-    <div>
-        <form id='dietForm'>
-            <p>Your diet is:</p>
+const dietDemoInfo = (
+    <Popover id="dietInfos">
+          <Popover.Header as="h3">This is only a portfolio project with few diets.</Popover.Header>
+            <Popover.Body>
+              Other diet preferences could be easily introduced!
+            </Popover.Body>
+            </Popover>
+  );
+  
 
-        <ToggleButtonGroup type="checkbox">
-            <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-            <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-            <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-        </ToggleButtonGroup>
-        </form>
-        {summary && (<Container ><p className="text fw-bold">{summary}</p><Button variant="danger text fw-bold" onClick={()=> navigate('/fridge')}>Let's go to the fridge!</Button></Container>)}
-    </div>
+    return (
+        <Container className="d-grid justify-content-center">
+            <div className="row d-grid justify-content-center">
+            <ToggleButtonGroup type="checkbox" className="d-block">
+                <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+                <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+                <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
+                <OverlayTrigger trigger="click" placement="right" overlay={dietDemoInfo}><Button variant="btn btn-info text-white fw-bold">?</Button></OverlayTrigger>
+            </ToggleButtonGroup>
+            </div>
+            <div className="row d-grid justify-content-center">
+            <p className="text fw-bold d-block">{summary}</p>
+            </div>
+            <div className="row d-grid justify-content-center">
+            <Button variant="dark btn mb-2 border border-2 border-black text fw-bold" onClick={()=> navigate('/fridge')}>Let's go to the fridge!</Button>
+            </div>
+        </Container>
   )
 }
 

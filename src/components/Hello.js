@@ -1,23 +1,36 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DietSelection from '../features/diets/DietSelection';
-import { Container } from 'react-bootstrap';
+import { Container, Button, Collapse } from 'react-bootstrap';
 
 function Hello() {
   
+const [helloVisibility, setHelloVisibility] = useState(true);
+const [dietVisibility, setDietVisibility] = useState(false);
 
+const toggleHello = () => {
+  setHelloVisibility(false);
+  setDietVisibility(true);
+}
 
   return (
-    <>
-      <header>
-        <h1 class="text-black">Full fridge seems more troubling than an empty one?</h1>
-        <h2>With this app I'll help you find a perfect recipe.
-          Just give me your preferences, show what's in your fridge and I've got you covered!
-        </h2>
-      </header>
-      <Container className="bg-white text-black border border-black border-5 rounded bg-opacity-75">
+    <Container className="d-grid justify-content-center">
+      <Collapse in={helloVisibility}>
+        <div id="hello-collapse" aria-expanded={helloVisibility}>
+          <h4 class="text-black">Full fridge seems more troubling than an empty one?</h4>
+          <p class="text-black">This app will help you find a perfect recipe.
+            Just give me your preferences, show what's in your fridge and I've got you covered!
+          </p>
+          <Button variant="btn btn-light border border-black border-3 fw-bold" aria-controls="hello-collapse diet-expand" onClick={()=>{toggleHello()}}>
+            Let's start!
+          </Button>
+        </div>
+      </Collapse>
+      <Collapse in={dietVisibility}>
+      <Container id="diet-expand" aria-expanded={dietVisibility} >
         <DietSelection />
       </Container>
-    </>
+      </Collapse>
+    </Container>
   )
 }
 

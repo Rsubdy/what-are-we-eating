@@ -34,19 +34,27 @@ function App() {
   
 
   return (
-    <Container className="container bg-warning" style={bodyStyle}>
+    <Container className="container bg-warning d-block justify-content-center" style={bodyStyle}>
       <Row className="sticky-top">
-      <Navbar expand="lg" className="navbar navbar-expand-lg justify-content-center sticky-top bg-warning">
+      <Navbar expand="lg" className="navbar navbar-expand-lg bg-warning border-bottom border-black border-5 mb-2">
+          <Col className="col-1 me-2">
           <img className="navbar-logo" src={logo} alt="logo" height="150" w-auto/>
-          <header className="title bg-white border border-5 border-black" style={title} >What are we eating?</header>
+          </Col>
+          <Col>
+            <Row className="mb-1">
+            <header className="title bg-white border border-5 border-black" style={title} >What are we eating?</header>
+            </Row>
+          <Row className="d-block justify-content-center">
           <NavLink className="button active" to="/" ><p className={navButton}>Home</p></NavLink>
           <NavLink to="/fridge" ><p className={navButton}>Fridge</p></NavLink>
           <NavLink to="/recipes" ><p className={navButton}>Recipes</p></NavLink>
-          <NavLink to="/about" >About</NavLink>
+          <NavLink to="/about"><p className={navButton}>About</p></NavLink>
+          </Row>
+          </Col>
       </Navbar>
       </Row>
-      <Row>
-        <main className="container w-75">
+      <Row className="d-flex justify-content-center">
+        <main className="bg-white text-black border border-black border-5 rounded bg-opacity-75 w-50 p-3">
           <Outlet />
         </main>
       </Row>
