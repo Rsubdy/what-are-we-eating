@@ -104,7 +104,7 @@ const dietDemoInfo = (
             </ToggleButtonGroup>
             </div>
             <div className="row d-grid justify-content-center">
-            <p className="text fw-bold d-block">{summary}</p>
+            <p className="text fw-bold d-block mt-3">{summary}</p>
             </div>
             <div className="row d-grid justify-content-center">
             <Button variant="dark btn mb-2 border border-2 border-black text fw-bold" onClick={()=> navigate('/fridge')}>Let's go to the fridge!</Button>

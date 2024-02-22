@@ -10,7 +10,7 @@ function ProductsList() {
 
   return (
     <div>
-      <h1>Products to add:</h1>
+      <h1>Select products:</h1>
       {allProducts.map((e)=>{
         return <ListedProduct product={e} key={e.id} />
       })}

@@ -3,7 +3,7 @@ import ProductsList from '../products/ProductsList';
 import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
-
+import { Container, Col, Row } from 'react-bootstrap';
 
 function Fridge() {
 
@@ -21,13 +21,14 @@ useEffect(()=> {
 
   return (
     <div>
-      <h1>Fridge</h1>
-      <aside>
+      <Container className="row">
+      <Col className="col-6 border-end border-black border-4">
+        <FridgeList list={allFridgeProducts} clear={clear} />
+      </Col>
+      <Col className="col-6 ps-4">
         <ProductsList />
-      </aside>
-      <main>
-        <FridgeList list={allFridgeProducts} clear={clear}/>
-      </main>
+      </Col>
+      </Container>
     </div>
   )
 }
