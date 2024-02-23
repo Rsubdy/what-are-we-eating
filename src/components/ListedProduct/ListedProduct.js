@@ -2,11 +2,20 @@ import React from 'react'
 import {useDispatch} from 'react-redux';
 import { addToFridge } from '../../features/fridge/fridgeSlice';
 import { removeProduct } from '../../features/products/productsSlice';
+import {Container, Row, Col, Button, Image } from 'react-bootstrap';
+import food from '../../img/food.png';
+import gluten from '../../img/gluten.png';
+import meat from '../../img/meat.png';
+import dairy from '../../img/dairy.png'; 
+
 
 function ListedProduct({product}) {
-    
-  const {name, image, diet} = product;
-    const dispatch = useDispatch();
+  
+  const {name, diet} = product;
+  
+  const image = `../../img/${name}.jpg`
+
+  const dispatch = useDispatch();
     
     //Button handlers:
 
@@ -18,16 +27,37 @@ function ListedProduct({product}) {
       dispatch(removeProduct(product));
     }
 
+    const Alergen = {
+
+
+
+    }
     return (
-    <div>
-        <h3>{name}</h3>
-        <img src={image} alt={name}/>
-        {diet.glutenfree === true && <img src="../../img/glutenFree.jpg" alt="glutenfree product" />}
+    
+    <Container className="d-inline justify-content-center">
+        <Row>
+          <Col className="col-2">
+            <Image src={food} alt={name} className="img w-100"/>
+          </Col>
+          <Col>
+            <h5>{name}</h5>
+          </Col>
+        </Row>
+        <Row>
+        </Row>
+        {diet.glutenfree === true && (
+          </Col>
+            <Row>
+            </Row>
+            <Row>
+              <p>Contains {</p>
+            </Row><img src="../../img/glutenFree.jpg" alt="glutenfree product" />}
+          <Col >
         {diet.vegetarian === true && <img src="../../img/vegetarian.jpg" alt="vegetarian product" />}
         {diet.dairyfree === true && <img src="../../img/dairyFree.jpg" alt="dairyfree product" />}
-        <button onClick={handleAddToFridge}>Add to fridge</button>
-        <button onClick={handleDeleteFromDatabase}>Delete</button>
-    </div>
+        <Button className="btn-success btn-sm " onClick={handleAddToFridge}>Add to fridge</Button>
+        <Button className="btn-success btn-sm "  onClick={handleDeleteFromDatabase}>Delete</Button>
+    </Container>
   )
 }
 
