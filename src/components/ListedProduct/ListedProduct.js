@@ -6,7 +6,7 @@ import {Container, Row, Col, Button, Image } from 'react-bootstrap';
 import food from '../../img/food.png';
 import gluten from '../../img/gluten.png';
 import meat from '../../img/meat.png';
-import dairy from '../../img/dairy.png'; 
+import dairy from '../../img/dairy.jpg'; 
 
 
 function ListedProduct({product}) {
@@ -27,11 +27,14 @@ function ListedProduct({product}) {
       dispatch(removeProduct(product));
     }
 
-    const Alergen = {
+    // function Alergen (diet){
+    //   const diet = props;
+    //   let 
+      
+    //   let alergen;
+    //   if 
+    // }
 
-
-
-    }
     return (
     
     <Container className="d-inline justify-content-center">
@@ -45,16 +48,16 @@ function ListedProduct({product}) {
         </Row>
         <Row>
         </Row>
-        {diet.glutenfree === true && (
-          </Col>
+        <Row>
+        {diet.glutenfree === true && (<img src="../../img/glutenFree.jpg" alt="glutenfree product" />)}
+        </Row>
+        <Col>
             <Row>
             </Row>
-            <Row>
-              <p>Contains {</p>
-            </Row><img src="../../img/glutenFree.jpg" alt="glutenfree product" />}
-          <Col >
+              <p>Contains</p>
+          </Col >
         {diet.vegetarian === true && <img src="../../img/vegetarian.jpg" alt="vegetarian product" />}
-        {diet.dairyfree === true && <img src="../../img/dairyFree.jpg" alt="dairyfree product" />}
+        {diet.dairyfree === true && <img src="../../img/dairy.jpg" alt="dairyfree product" />}
         <Button className="btn-success btn-sm " onClick={handleAddToFridge}>Add to fridge</Button>
         <Button className="btn-success btn-sm "  onClick={handleDeleteFromDatabase}>Delete</Button>
     </Container>
