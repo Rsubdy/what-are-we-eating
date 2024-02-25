@@ -1,12 +1,13 @@
 import {React} from 'react'
 import {useDispatch} from 'react-redux';
 import { removeFromFridge, fridgeSetAmount } from '../../features/fridge/fridgeSlice';
-
+import { CloseButton, Col, Row, Image } from 'react-bootstrap';
+import food from '../../img/food.png';
 
 function FridgeProduct({product}) {
     
     
-    let {name, image, diet, id} = product;
+    let {name, diet, id} = product;
     const dispatch = useDispatch();
 
     //Button handlers:
@@ -28,16 +29,26 @@ function FridgeProduct({product}) {
     
       return (
       <div>
-          <h3>{name}</h3>
-          <img src={image} alt={name}/>
-          {diet.glutenfree === true && <img src='../../img/glutenFree.jpg' alt="glutenfree product" />}
-          {diet.vegetarian === true && <img src='../../img/vegetarian.jpg' alt="vegetarian product" />}
-          {diet.dairyfree === true && <img src='../../img/dairyFree.jpg' alt="dairyfree product" />}
-          {/* <h4>Amount: {amount}</h4>
+          <Row>
+            <Col className="col-2">
+              <Image src={food} alt={name} className="img w-100"/>
+            </Col>
+            <Col className="col-8">
+              <h5>{name}</h5>
+            </Col>
+            <Col className="col-2">
+              <CloseButton onClick={handleRemoveFromFridge} />
+            </Col>
+          </Row>
+          {/* <Row>
+            {diet.glutenfree === true && <img src='../../img/glutenFree.jpg' alt="glutenfree product" />}
+            {diet.vegetarian === true && <img src='../../img/vegetarian.jpg' alt="vegetarian product" />}
+            {diet.dairyfree === true && <img src='../../img/dairyFree.jpg' alt="dairyfree product" />}
+          </Row>
+          <h4>Amount: {amount}</h4>
+
           <button onClick={handleIncrementAmount}>+</button>
           <button onClick={handleDecrementAmount}>-</button> */}
-          <button onClick={handleRemoveFromFridge}>Remove</button>
-          
       </div>
     )
 }

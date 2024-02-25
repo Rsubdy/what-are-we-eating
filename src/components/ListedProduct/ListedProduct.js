@@ -12,8 +12,6 @@ import dairy from '../../img/dairy.jpg';
 function ListedProduct({product}) {
   
   const {name, diet} = product;
-  
-  const image = `../../img/${name}.jpg`
 
   const dispatch = useDispatch();
     
