@@ -4,6 +4,7 @@ import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
 import { Container, Col, Row } from 'react-bootstrap';
+import SearchProducts from '../products/SearchProducts';
 
 function Fridge() {
 
@@ -23,10 +24,12 @@ useEffect(()=> {
     <div>
       <Container className="row">
       <Col className="col-6 border-end border-black border-4">
+        <h3>Products in your fridge</h3>
         <FridgeList list={allFridgeProducts} clear={clear} />
       </Col>
       <Col className="col-6 ps-4">
-        <ProductsList />
+        <h3>Select products:</h3>
+        <SearchProducts />
       </Col>
       </Container>
     </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { selectProductsByDietPreferences } from './productsSlice'
 import {useSelector} from 'react-redux';
 import ListedProduct from '../../components/ListedProduct/ListedProduct';
+import { Col, Row, Container } from 'react-bootstrap';
 
 function ProductsList() {
 
@@ -9,12 +10,19 @@ function ProductsList() {
   const allProducts = useSelector(selectProductsByDietPreferences);
 
   return (
-    <div>
-      <h1>Select products:</h1>
+    <Container>
+      <Row>
+      <h3>Select products:</h3>
+      </Row>
+      <Row>
+
+      </Row>
+      <Row>
       {allProducts.map((e)=>{
         return <ListedProduct product={e} key={e.id} />
       })}
-    </div>
+      </Row>
+    </Container>
   )
 }
     

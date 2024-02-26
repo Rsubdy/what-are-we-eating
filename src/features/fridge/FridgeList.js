@@ -11,9 +11,8 @@ const dispatch = useDispatch();
 
 return (
     <div>
-      <h1>Products in your fridge:</h1>
       {allProducts.length !== 0 && <Button 
-        className="btn-danger btn-sm border-black border-4 fw-bold mb-3"
+        className="btn-danger btn-sm border-black border-3 fw-bold mb-3"
         onClick={(event)=>{
           dispatch(clear([]));
           localStorage.removeItem('recipesFromApi');
