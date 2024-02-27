@@ -21,6 +21,15 @@ const searchInput = useRef();
             </Row>
             <Row>
             <label htmlFor="glutenfree">Glutenfree<input type="checkbox" id="glutenfree" /></label>
+            <label htmlFor="dairyfree">Dairyfree<input type="checkbox" id="dairyfree" /></label>
+            <label htmlFor="vegetarian">Vegetarian<input type="checkbox" id="vegetarian" /></label>
+            </Row>
+            <Row>
+                <select>Sort by:
+                    <option>Name A-Z</option>
+                    <option>Name Z-A</option>
+                    <option></option>
+                </select>
             </Row>
             </form>
         </Row>
