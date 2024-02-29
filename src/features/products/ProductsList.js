@@ -12,12 +12,6 @@ function ProductsList() {
   return (
     <Container>
       <Row>
-      <h3>Select products:</h3>
-      </Row>
-      <Row>
-
-      </Row>
-      <Row>
       {allProducts.map((e)=>{
         return <ListedProduct product={e} key={e.id} />
       })}
