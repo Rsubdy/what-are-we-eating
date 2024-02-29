@@ -1,5 +1,4 @@
 
-
 let idTracker = 1;
 let incrementId = () => idTracker++;
 

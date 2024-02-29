@@ -2,19 +2,11 @@ import React from 'react';
 import DietForm from './DietForm';
 import { useSelector } from 'react-redux';
 import { getDietPreferences } from './dietPreferencesSlice';
-import { Container, Row, Button } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 
 function DietSelection() {
   const storePreferences = useSelector(getDietPreferences);
-//   let storedLocally = localStorage.getItem('preferences');
-  
-// useEffect(()=>{
-//     if(storePreferences.excludedDiets[0] === 'initial' && storedLocally !== null){
-//       dispatch(setPreferences(JSON.parse(storedLocally)))
-//     }
-//   }, [dispatch, storedLocally, storePreferences])
-  
 
   return (
     <Container className="container d-flex justify-content-center">

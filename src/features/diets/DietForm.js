@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toggleDietExclusion } from './dietPreferencesSlice';
 import DietButton from '../../components/DietButton/DietButton';
-import { ToggleButtonGroup, Button, Container, Popover, OverlayTrigger, Row } from 'react-bootstrap';
+import { ToggleButtonGroup, Button, Container, Popover, OverlayTrigger} from 'react-bootstrap';
 
 function DietForm(props) {
 
@@ -80,7 +80,6 @@ const createSummary = useCallback(() => {
 
 useEffect(()=>{
     setSummary(createSummary(storePreferences));
-    // localStorage.setItem('preferences', JSON.stringify(storePreferences));
 }, [setSummary, createSummary, storePreferences])
 
 const dietDemoInfo = (

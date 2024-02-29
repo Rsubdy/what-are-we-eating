@@ -1,13 +1,12 @@
 import Recipe from './Recipe';
 
-// Constructor for Recipe: (name, image = defaultImage, ingredients, preparation)
+// Constructor for Recipe: (name, ingredients, preparation)
 
 
 let initialRecipesData = [];
 
 initialRecipesData.push(JSON.stringify(new Recipe(
     'Pancakes',
-    undefined,
     [
         {id: 1, amount: 0.5},
         {id: 2, amount: 2},
@@ -17,7 +16,6 @@ initialRecipesData.push(JSON.stringify(new Recipe(
     )));
 initialRecipesData.push(JSON.stringify(new Recipe(
     'Scrambled eggs',
-    undefined,
     [
         {id: 2, amount: 2},
         {id: 6, amount: 15}],
@@ -25,7 +23,6 @@ initialRecipesData.push(JSON.stringify(new Recipe(
     )));
 initialRecipesData.push(JSON.stringify(new Recipe(
     'Ham sandwich',
-    undefined,
     [
         {id: 4, amount: 100},
         {id: 5, amount: 100},
@@ -34,7 +31,6 @@ initialRecipesData.push(JSON.stringify(new Recipe(
     )));
 initialRecipesData.push(JSON.stringify(new Recipe(
     'English toast',
-    undefined,
     [
         {id: 1, amount: 0.1},
         {id: 2, amount: 1},
