@@ -76,7 +76,6 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
           let apiKey = '513e64bd34b3c29b478441b9681dd34e';
           let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
           dietPreferences.length !== 0 && (url += '&health='+dietPreferences.join('&health='));
-          alert(url);
           const response = await fetch(url);
           let payload = [];
           if (response.ok){

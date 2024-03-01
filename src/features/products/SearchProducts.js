@@ -1,13 +1,23 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import {Col, Row, Container } from 'react-bootstrap';
 import FridgeProduct from '../../components/FridgeProduct/FridgeProduct';
 import ProductsList from './ProductsList';
-
+import { useSelector } from 'react-redux';
+import { selectProductByName } from './productsSlice';
 
 function SearchProducts() {
     
-const [displayedProducts, setDisplayedProducts] = useState(); 
-const searchInput = useRef();
+const [displayedProducts, setDisplayedProducts] = useState();
+const [searchInput, setSearchInput] = useState('');
+const usePerformSearch = (input) => {
+    const result = useSelector(selectProductByName(input));
+    setDisplayedProducts(result);
+}
+const useHandleSearch = (e) => {
+    setSearchInput(e.target.value);
+    usePerformSearch(searchInput);
+}
+
 
   return (
     <Container >
@@ -17,7 +27,7 @@ const searchInput = useRef();
             <p>Search product by name:</p>
             </Row>
             <Row>
-            <input type="text" ></input>
+            <input type="text" value={searchInput} onChange={useHandleSearch}/>
             </Row>
             <Row>
             <label htmlFor="glutenfree">Glutenfree<input type="checkbox" id="glutenfree" /></label>
