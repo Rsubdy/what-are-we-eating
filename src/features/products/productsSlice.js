@@ -17,9 +17,9 @@ const productsSlice = createSlice({
 //Selectors:
 
 export const selectAllProducts = (state) => state.products;
-export const selectProductByName = (state, action) => {
+export const selectProductByName = (state, name) => {
   let allProducts = state.products;
-  return allProducts.filter(product => product.name.toLowerCase().includes(action.payload.toLowerCase()))
+  return allProducts.filter(product => product.name.toLowerCase().includes(name.toLowerCase()))
 }
 export const selectProductById = (state, id) => state.products.find((e)=>e.id === id);
 export const selectProductsByDietPreferences = (state) => {

@@ -1,28 +1,20 @@
 import React, {useState} from 'react'
 import {Col, Row, Container } from 'react-bootstrap';
-import FridgeProduct from '../../components/FridgeProduct/FridgeProduct';
 import ProductsList from './ProductsList';
-import { useSelector } from 'react-redux';
-import { selectProductByName } from './productsSlice';
+
 
 function SearchProducts() {
     
-const [displayedProducts, setDisplayedProducts] = useState();
 const [searchInput, setSearchInput] = useState('');
-const usePerformSearch = (input) => {
-    const result = useSelector(selectProductByName(input));
-    setDisplayedProducts(result);
-}
+
 const useHandleSearch = (e) => {
     setSearchInput(e.target.value);
-    usePerformSearch(searchInput);
 }
-
 
   return (
     <Container >
         <Row>
-            <form>
+            <form onSubmit={e => e.preventDefault()}>
             <Row>
             <p>Search product by name:</p>
             </Row>
@@ -44,7 +36,7 @@ const useHandleSearch = (e) => {
             </form>
         </Row>
         <Row>
-            <ProductsList products={displayedProducts} />
+            <ProductsList search={searchInput} />
         </Row>
     </Container>
   )
