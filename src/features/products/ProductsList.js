@@ -3,21 +3,16 @@ import { selectAllProducts, selectProductByName, selectProductsByDietPreferences
 import {useSelector} from 'react-redux';
 import ListedProduct from '../../components/ListedProduct/ListedProduct';
 import { Col, Row, Container } from 'react-bootstrap';
+import {sorting} from './sorting';
 
 function ProductsList({search}) {
 
 const searchedProducts = useSelector(state => selectProductByName(state, search));
 const allProducts = useSelector(selectAllProducts);
 
-// const sortByNameAsc = array => {
-//   let result = [];
-//   let names => 
-//   array.f
-// }
+let displayedProducts = sorting(allProducts);
 
-let displayedProducts = allProducts;
-
-search.length !== 0 && (displayedProducts = searchedProducts);
+search.length !== 0 && (displayedProducts = sorting(searchedProducts));
 
   return (
     <Container>
