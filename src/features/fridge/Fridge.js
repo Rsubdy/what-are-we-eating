@@ -3,11 +3,13 @@ import ProductsList from '../products/ProductsList';
 import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
+import { selectAllProducts } from '../products/productsSlice';
 import { Container, Col, Row } from 'react-bootstrap';
 import SearchProducts from '../products/SearchProducts';
 
 function Fridge() {
 
+const allProducts = useSelector(selectAllProducts);
 let allFridgeProducts = useSelector(selectAllFridgeProducts);
 const localStorageFridge = localStorage.getItem('fridge');
 const dispatch = useDispatch();
@@ -29,7 +31,7 @@ useEffect(()=> {
       </Col>
       <Col className="col-6 ps-4">
         <h3>Select products:</h3>
-        <SearchProducts />
+        <SearchProducts allProducts={allProducts}/>
       </Col>
       </Container>
     </div>

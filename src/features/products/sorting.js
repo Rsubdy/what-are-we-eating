@@ -1,4 +1,4 @@
-export const sorting = (array) => {
+export const sorting = (array, method) => {
     
     const mapObjectToArrayIndex = (array) => {
         let map = new Map();
@@ -36,5 +36,5 @@ export const sorting = (array) => {
         return result;
     }
 
-    return sortObjects(array, sortedNamesFromArray, arrayMapped);
+    return method.includes("0") ? (sortObjects(array, sortedNamesFromArray, arrayMapped)) : (sortObjects(array, sortedNamesFromArray, arrayMapped).reverse());
     }
