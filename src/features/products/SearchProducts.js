@@ -30,14 +30,14 @@ const handleSelect = (eventKey) => {
             </Row>
             </form>
             <Row>
-            <DropdownButton id="sorting" title="Sort products" onSelect={handleSelect}>
+            <DropdownButton id="sorting" title="Sort products" onSelect={handleSelect} variant="light">
                 <Dropdown.Item eventKey="0">A-Z</Dropdown.Item>
                 <Dropdown.Item eventKey="1">Z-A</Dropdown.Item>
             </DropdownButton>
             </Row>
         </Row>
         <Row>
-        {displayedProducts.length === 0 ? <p>No products matching your search!</p> : 
+        {searchedProducts.length === 0 ? <p>No products matching your search!</p> : 
             <ProductsList searchedProducts={searchedProducts} sortingPreference={sortingPreference} displayedProducts={displayedProducts} />}
         </Row>
     </Container>
