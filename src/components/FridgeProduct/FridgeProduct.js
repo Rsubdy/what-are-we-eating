@@ -2,7 +2,7 @@ import {React} from 'react'
 import {useDispatch} from 'react-redux';
 import { removeFromFridge, fridgeSetAmount } from '../../features/fridge/fridgeSlice';
 import { CloseButton, Col, Row, Image } from 'react-bootstrap';
-import food from '../../img/food.png';
+import fridge from '../../img/fridge.png';
 
 function FridgeProduct({product}) {
     
@@ -31,7 +31,7 @@ function FridgeProduct({product}) {
       <div>
           <Row>
             <Col className="col-2">
-              <Image src={food} alt={name} className="img w-100"/>
+              <Image src={fridge} alt={name} className="img w-100"/>
             </Col>
             <Col className="col-8">
               <h5>{name}</h5>

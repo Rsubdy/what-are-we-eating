@@ -6,6 +6,7 @@ import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from 
 import { selectAllProducts } from '../products/productsSlice';
 import { Container, Col, Row } from 'react-bootstrap';
 import SearchProducts from '../products/SearchProducts';
+import ProductCreator from '../products/ProductCreator';
 
 function Fridge() {
 
@@ -31,6 +32,7 @@ useEffect(()=> {
       </Col>
       <Col className="col-6 ps-4">
         <h3>Select products:</h3>
+        <ProductCreator />
         <SearchProducts allProducts={allProducts}/>
       </Col>
       </Container>
