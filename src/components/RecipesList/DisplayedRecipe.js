@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useSelector} from 'react-redux';
-import {Container, Col, Row, Button, Fade, Image, Modal } from 'react-bootstrap';
+import {Container, Col, Row, Button, Fade, Image, Modal, Badge } from 'react-bootstrap';
 
 import recipeImg from '../../img/recipeImg.png';
 import dairy from '../../img/dairy.jpg';
@@ -13,8 +13,15 @@ function DisplayedRecipe({recipe}) {
     
     const products = useSelector(state => state.products);
     
-    let {name, ingredients, preparation} = recipe;
+    const  {name, ingredients, preparation} = recipe;
+    
+    const [prepDescription, setPrepDescription] = useState(preparation.slice(0,30)+"...");
+    const [moreClicked, setMoreClicked] = useState(false);
 
+    const handleShowMore = () => {
+        moreClicked ? setPrepDescription(preparation.slice(0, 30) + "...") : setPrepDescription(preparation);
+        setMoreClicked(!moreClicked);
+    }
     //Getting products from the store by their id's to get names and information about diets accepting them
 
     const getProductsFromRecipesIngredients = (recipe) => {
@@ -66,12 +73,11 @@ function DisplayedRecipe({recipe}) {
             </Col>
           </Row>
           <h5>Preparation:</h5>
-          <p>{preparation.slice(0,50)+"..."}</p>
+          <p>{prepDescription}</p><h6>{moreClicked ? <Badge className="btn btn-sm btn-light" onClick={handleShowMore}>Hide full description</Badge> : <Badge className="btn btn-sm btn-light" onClick={handleShowMore}>Show more</Badge>}</h6>
           <h5>Ingredients:</h5>
           <ul>
             {productsFromThisRecipe.map((e) => <li key={e.id}>{e.name}</li>)}
           </ul>
-          <button>Show more...</button>
 
       </Container>
     )

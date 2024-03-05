@@ -6,6 +6,7 @@ import { selectAllRecipes, selectAllApiRecipes, addApiRecipe} from '../features/
 import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/fridge/fridgeSlice';
 import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';
+import {Button, Row, Col} from 'react-bootstrap';
 
 function Recipes() {
   
@@ -162,7 +163,7 @@ useEffect(()=>{
       <aside>
         {<div>
           {headline !== null ? headline : <h3>Need more inspiration based on your fridge products?</h3>}
-          {apiRecipesLoaded ? (<div><RecipesFromApi recipes={recipesFromApi}/></div>) : <button onClick={()=>handleFetchRecipes()}>Get more recipes from the web!</button>}
+          {apiRecipesLoaded ? (<div><RecipesFromApi recipes={recipesFromApi}/></div>) : <Button className="btn btn-light" onClick={()=>handleFetchRecipes()}>Get more recipes from the web!</Button>}
         <Outlet />
         </div>}
       </aside>
