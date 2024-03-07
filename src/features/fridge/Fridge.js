@@ -4,7 +4,7 @@ import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
 import { selectAllProducts } from '../products/productsSlice';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row, Accordion } from 'react-bootstrap';
 import SearchProducts from '../products/SearchProducts';
 import ProductCreator from '../products/ProductCreator';
 
@@ -31,9 +31,24 @@ useEffect(()=> {
         <FridgeList list={allFridgeProducts} clear={clear} />
       </Col>
       <Col className="col-6 ps-4">
-        <h3>Select products:</h3>
-        <ProductCreator />
-        <SearchProducts allProducts={allProducts}/>
+        <Accordion defaultActiveKey="1">
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>
+              Add new product
+            </Accordion.Header>
+            <Accordion.Body>
+             <ProductCreator />
+            </Accordion.Body>
+          </Accordion.Item>
+          <Accordion.Item eventKey="1">
+            <Accordion.Header>
+              Select products
+            </Accordion.Header>
+            <Accordion.Body>
+              <SearchProducts allProducts={allProducts}/>
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
       </Col>
       </Container>
     </div>
