@@ -28,13 +28,13 @@ function ListedProduct({product}) {
           <Col className="col-2">
             <Image src={food} alt={name} className="img w-100"/>
           </Col>
-          <Col className="col-3">
+          <Col className="col-5">
             <h5>{name}</h5>
           </Col>
-          <Col className="col-7 d-flex justify-content-center ml-3">
+          <Col className="col-5 d-flex justify-content-center ml-3">
             <Row className="">
             <Col>
-            <Button className="btn-success btn-sm " onClick={handleAddToFridge}>Add</Button>
+            <Button className="btn-success btn-sm" onClick={handleAddToFridge}>Add</Button>
             </Col>
             <Col>
             <HideProductButton product={product}/>
