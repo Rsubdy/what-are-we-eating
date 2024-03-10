@@ -1,12 +1,8 @@
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux';
-import {Container, Col, Row, Button, Fade, Image, Modal, Badge } from 'react-bootstrap';
-
+import {Container, Col, Row, Button, Image, Modal, Badge } from 'react-bootstrap';
+import FoodRestriction from './FoodRestriction';
 import recipeImg from '../../img/recipeImg.png';
-import dairy from '../../img/dairy.jpg';
-import gluten from '../../img/gluten.png';
-import meat from '../../img/meat.png';
-
 
 
 function DisplayedRecipe({recipe}) {
@@ -52,6 +48,8 @@ function DisplayedRecipe({recipe}) {
      const dairyfree = productsFromThisRecipe.every((product)=>product.diet.dairyfree === true);
      const vegetarian = productsFromThisRecipe.every((product)=>product.diet.vegetarian === true);
     
+    //
+
     return (
       <Container key={recipe.id}>
           <Row>
@@ -66,9 +64,9 @@ function DisplayedRecipe({recipe}) {
                     <p>Food restrictions:</p>
                 </Row>
                 <Row>
-                {glutenfree === false && <Col><Image width="40" height="40" src={gluten} alt="glutenfree product" /></Col>}
-                {vegetarian === false && <Col><Image width="40" height="40" src={meat} alt="vegetarian product" /></Col>}
-                {dairyfree === false && <Col><Image width="40" height="40" src={dairy} alt="dairyfree product" /></Col>}
+                {!glutenfree && <FoodRestriction diet='glutenfree' />}
+                {!dairyfree && <FoodRestriction diet='dairyfree' />}
+                {!vegetarian && <FoodRestriction diet='vegetarian' />}
                 </Row>
             </Col>
           </Row>

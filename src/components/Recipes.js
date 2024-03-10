@@ -155,7 +155,7 @@ useEffect(()=>{
   return (
     <div>
       <main>
-      <h1>Recipes from products in your fridge:</h1>
+      <h2>Recipes from products in your fridge:</h2>
         {<div>
           <RecipesList recipes={recipesFromLocalDb} />
         </div>}

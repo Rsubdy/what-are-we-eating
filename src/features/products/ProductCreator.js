@@ -41,12 +41,16 @@ const handleDietExclusion = (e) => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
+    if (name === ''){
+        alert("Please enter the name of the product!");
+    } else {
     const newProduct = JSON.stringify(new Product({name: name, diet: {glutenfree: glutenfree, dairyfree: dairyfree, vegetarian: vegetarian}}));
     dispatch(addProduct(newProduct));
     setName('');
     setDairyfree(false);
     setGlutenfree(false);
     setVegetarian(false);
+    }
 }
 
 const handleChange = (e) => {
