@@ -22,6 +22,7 @@ function Recipes() {
   const allApiRecipes = useSelector(selectAllApiRecipes);
   let excludedDiets = useSelector(getExcludedDiets);
   let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
+
   //helper functions: 
 
 // rewriting diet names for query convention:
@@ -53,11 +54,11 @@ return dietNamesForQuery
 
 const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
   
-//selecting ingredients for fetching from public API:
+//selecting a maximum of 5 ingredients for fetching from public API:
   const fridgeProductsQuery = () => {
     let productsNamesArray = [];
-    for (let product of allFridgeProducts){
-      productsNamesArray.push(product.name.toLowerCase());
+    for (let product = 0; product<4; product++){
+      productsNamesArray.push(allFridgeProducts[product].name.toLowerCase());
     }
     return productsNamesArray.join('%2C')
   }

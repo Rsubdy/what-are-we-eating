@@ -25,7 +25,7 @@ const toggleHello = () => {
               <p className="text-black">First declare your preferences, then show what's in your fridge and this app will find you a recipe!</p>
             </Col>
             <Col className="col-6">
-              <Image className="border border-black border-4 m-6" src={fridgeStocked} alt="Stocked fridge" width="100%" height="100%" />
+              <Image className="border border-black border-4 m-6" src={fridgeStocked} alt="Stocked fridge" width="250" height="300" />
             </Col>
           </Row>
           

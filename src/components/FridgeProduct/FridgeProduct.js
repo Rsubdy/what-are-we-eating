@@ -7,7 +7,7 @@ import fridge from '../../img/fridge.png';
 function FridgeProduct({product}) {
     
     
-    let {name, diet, id} = product;
+    let {name, id} = product;
     const dispatch = useDispatch();
 
     //Button handlers:
@@ -16,15 +16,6 @@ function FridgeProduct({product}) {
         dispatch(fridgeSetAmount({id:id, amount: 1}));
         dispatch(removeFromFridge(product));
       }
-   
-   //for Further development:
-      // const handleIncrementAmount = () => {
-    //     dispatch(fridgeAmountIncrement(product));
-    // }
-    // const handleDecrementAmount = () => {
-    //     amount === 1 ? handleRemoveFromFridge() : 
-    //     dispatch(fridgeAmountDecrement(product));
-    // }
 
     
       return (
@@ -40,15 +31,6 @@ function FridgeProduct({product}) {
               <CloseButton onClick={handleRemoveFromFridge} />
             </Col>
           </Row>
-          {/* <Row>
-            {diet.glutenfree === true && <img src='../../img/glutenFree.jpg' alt="glutenfree product" />}
-            {diet.vegetarian === true && <img src='../../img/vegetarian.jpg' alt="vegetarian product" />}
-            {diet.dairyfree === true && <img src='../../img/dairyFree.jpg' alt="dairyfree product" />}
-          </Row>
-          <h4>Amount: {amount}</h4>
-
-          <button onClick={handleIncrementAmount}>+</button>
-          <button onClick={handleDecrementAmount}>-</button> */}
       </div>
     )
 }

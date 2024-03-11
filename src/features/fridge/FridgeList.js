@@ -35,12 +35,12 @@ useEffect(()=>{
 return (
     <Container>
       <Row>
-        <Col>
-        <Button className={recipesButton ? "btn-light btn-sm fw-bold border-black border-2" : "btn-light btn-sm border-light border-2 disabled"} onClick={handleShowRecipes}>{showRecipes}</Button>
+        <Col className={recipesButton ? "col-6" : "col-12"}>
+        <Button className={recipesButton ? "btn-light btn-sm fw-bold border-black border-2 h-100" : "btn-light btn-sm border-light border-2 disabled w-100"} onClick={handleShowRecipes}>{showRecipes}</Button>
         </Col>
       <Col>
       {allProducts.length !== 0 && <Button 
-        className="btn-danger btn-sm border-black border-3 fw-bold mb-3"
+        className="btn-danger btn-sm border-black border-3 fw-bold h-100"
         onClick={(event)=>{
           dispatch(clear([]));
           localStorage.removeItem('recipesFromApi');
@@ -48,7 +48,7 @@ return (
       >Clear fridge</Button>}
       </Col>
       </Row>
-      <Row>
+      <Row className="mt-2">
       <Col>
       {allProducts.map((product)=>{
           return <FridgeProduct product={product} key={product.id} />

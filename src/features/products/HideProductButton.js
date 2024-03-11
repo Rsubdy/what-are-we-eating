@@ -28,7 +28,7 @@ const handleHideFromDatabase = () => {
 
   return (
     <>
-    <Button className="btn-danger btn-sm"  onClick={handleHideFromDatabase}>Hide</Button>
+    <Button className="btn-danger btn-sm w-100"  onClick={handleHideFromDatabase}>Hide</Button>
     <div><Modal show={showModal} onHide={noHandler}>
       <Modal.Dialog >
         <Modal.Header>

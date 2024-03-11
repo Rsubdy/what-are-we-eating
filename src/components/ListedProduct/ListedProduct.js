@@ -34,7 +34,7 @@ function ListedProduct({product}) {
           <Col className="col-5 d-flex justify-content-center ml-3">
             <Row className="">
             <Col>
-            <Button className="btn-success btn-sm" onClick={handleAddToFridge}>Add</Button>
+            <Button className="btn-success btn-sm w-100 mb-1" onClick={handleAddToFridge}>Add</Button>
             </Col>
             <Col>
             <HideProductButton product={product}/>

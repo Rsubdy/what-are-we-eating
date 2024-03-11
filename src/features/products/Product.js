@@ -1,4 +1,3 @@
-import food from '../../img/food.png';
 
 let idTracker = 1;
 let incrementId = () => idTracker++;

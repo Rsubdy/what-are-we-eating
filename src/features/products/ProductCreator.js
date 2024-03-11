@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {Container, Row, Col, Button, ToggleButtonGroup} from 'react-bootstrap';
+import React, { useState } from 'react';
+import {Container, Button, ToggleButtonGroup} from 'react-bootstrap';
 import {useDispatch } from 'react-redux';
 import { addProduct } from './productsSlice';
 import Product from '../products/Product';
@@ -59,13 +59,13 @@ const handleChange = (e) => {
 
   return (
     <Container>
-        <h3>Create new product:</h3>
+        <h5>Create new product:</h5>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name: </label><input id="name" type="text" value={name} placeholder="what's my name?" onChange={handleChange} />
-            <ToggleButtonGroup type="checkbox" className="d-block">
+            <label htmlFor="name">Name: </label><input id="name" type="text" value={name} placeholder="what's my name?" onChange={handleChange} className="mb-2" />
+            <ToggleButtonGroup type="checkbox" size="sm" vertical className="mb-2" >
                 <Button variant="btn btn-warning btn-sm" className={glutenfree ? "" : "opacity-50"} dietname='glutenfree' onClick={handleDietExclusion}>Glutenfree</Button>
-                <Button variant="btn btn-dark btn-sm" className={dairyfree ? "" : "opacity-50"} dietName='dairyfree' onClick={handleDietExclusion}>Dairyfree</Button>
-                <Button variant="btn btn-success btn-sm" className={vegetarian ? "" : "opacity-50"}  dietName='vegetarian' onClick={handleDietExclusion}>Vegetarian</Button>
+                <Button variant="btn btn-dark btn-sm" className={dairyfree ? "" : "opacity-50"} dietname='dairyfree' onClick={handleDietExclusion}>Dairyfree</Button>
+                <Button variant="btn btn-success btn-sm" className={vegetarian ? "" : "opacity-50"}  dietname='vegetarian' onClick={handleDietExclusion}>Vegetarian</Button>
             </ToggleButtonGroup>
             <Button type="submit" className="btn btn-light">Add product</Button>
         </form>

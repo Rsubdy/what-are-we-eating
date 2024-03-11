@@ -26,7 +26,7 @@ const handleSelect = (eventKey) => {
         <Row>
             <form onSubmit={e => e.preventDefault()}>
             <Row>
-            <input type="text" value={searchInput} onChange={handleSearch} placeholder="Search product by name..."/>
+            <input type="text" value={searchInput} onChange={handleSearch} placeholder="Search product by name..." className="mb-2" />
             </Row>
             </form>
             <Row>
