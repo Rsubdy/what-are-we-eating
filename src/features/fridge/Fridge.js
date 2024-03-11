@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-import ProductsList from '../products/ProductsList';
 import FridgeList from './FridgeList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFridgeFromLocalstorage, selectAllFridgeProducts, clearFridge } from './fridgeSlice';
 import { selectProductsByDietPreferences } from '../products/productsSlice';
-import { Container, Col, Row, Accordion } from 'react-bootstrap';
+import { Container, Col, Accordion } from 'react-bootstrap';
 import SearchProducts from '../products/SearchProducts';
 import ProductCreator from '../products/ProductCreator';
 
