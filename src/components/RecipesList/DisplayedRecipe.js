@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux';
-import {Container, Col, Row, Button, Image, Modal, Badge } from 'react-bootstrap';
+import {Container, Col, Row, Image, Badge } from 'react-bootstrap';
 import FoodRestriction from './FoodRestriction';
 import recipeImg from '../../img/recipeImg.png';
 
@@ -74,7 +74,7 @@ function DisplayedRecipe({recipe}) {
           <p>{prepDescription}</p><h6>{moreClicked ? <Badge className="btn btn-sm btn-light" onClick={handleShowMore}>Hide full description</Badge> : <Badge className="btn btn-sm btn-light" onClick={handleShowMore}>Show more</Badge>}</h6>
           <h5>Ingredients:</h5>
           <ul>
-            {productsFromThisRecipe.map((e) => <li key={e.id}>{e.name}</li>)}
+            {productsFromThisRecipe.map((e) => <li key={`product ${e.id}`}>{e.name}</li>)}
           </ul>
 
       </Container>

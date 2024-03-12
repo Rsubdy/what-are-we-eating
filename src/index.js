@@ -10,7 +10,6 @@ import Fridge from './features/fridge/Fridge';
 import ProductsList from './features/products/ProductsList';
 import Recipes from './components/Recipes';
 import About from './components/About';
-import RecipeCreator from './components/RecipeCreator/RecipeCreator';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,7 +26,6 @@ root.render(
                 <Route path='/fridge/productslist' element={<ProductsList />} />
               </Route>
               <Route path='/recipes' element={<Recipes />} >
-                <Route path='/recipes/newrecipe' element={<RecipeCreator />} />
               </Route>
               <Route path='/about' element={<About />} />
               <Route path='*' element={<h1>Page Not Found</h1>} />

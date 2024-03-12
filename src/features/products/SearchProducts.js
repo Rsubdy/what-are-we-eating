@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Col, Row, Container, DropdownButton, Dropdown } from 'react-bootstrap';
+import {Row, Container, DropdownButton, Dropdown } from 'react-bootstrap';
 import ProductsList from './ProductsList';
 import { useSelector } from 'react-redux';
 import { selectProductByName } from './productsSlice';

@@ -6,7 +6,7 @@ import { selectAllRecipes, selectAllApiRecipes, addApiRecipe} from '../features/
 import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/fridge/fridgeSlice';
 import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';
-import {Button, Row, Col} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 function Recipes() {
   
@@ -29,7 +29,11 @@ function Recipes() {
 
 const rewriteDietNamesForQuery = (excludedDiets) => {
 
-  let dietNamesForQuery = [];
+let dietNamesForQuery = [];
+
+  if (excludedDiets.length === 0) {
+    return dietNamesForQuery;
+  } else {
     
 for (let name of excludedDiets){
 
@@ -49,7 +53,7 @@ for (let name of excludedDiets){
     dietNamesForQuery = [];
     break;
 }}
-return dietNamesForQuery
+return dietNamesForQuery}
 }
 
 const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
@@ -57,7 +61,9 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
 //selecting a maximum of 5 ingredients for fetching from public API:
   const fridgeProductsQuery = () => {
     let productsNamesArray = [];
-    for (let product = 0; product<4; product++){
+    let maxProducts = allFridgeProducts.length;
+    (allFridgeProducts.length > 5) && (maxProducts = 4);
+    for (let product = 0; product < maxProducts; product++){
       productsNamesArray.push(allFridgeProducts[product].name.toLowerCase());
     }
     return productsNamesArray.join('%2C')
@@ -102,7 +108,7 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
         }
     } catch (error) {
       if (error.message){
-        alert(error.message);
+        alert(error);
       } else {
       alert("Hmmm... Sometimes the web fails... Try again later!")}
 
