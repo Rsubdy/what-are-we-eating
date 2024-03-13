@@ -13,7 +13,7 @@ function About() {
       It prompts user to first select diet preferences. They will affect displayed products and recipes to avoid alergens and other dietary restrictions, such as avoiding meat.
       Following that step user can select products from the list and add them to the fridge.
       With the full list of products in the fridge user can proceed to the recipes list. The app contains some original recipes to simulate internal database of recipes. This is the preferred way to select them, as all of the products in the recipe have to be present in user's fridge.
-      To expand functionality app offers user an additional way to gather inspirations for dishes. If the presented list is not satysfying, user can fetch other recipes from external database via <strong><a href="https://www.edamam.com">Edamam Recipes API</a></strong>. This query will include users dietary preferences and list of products in the fridge, however recipes can also include other products, so there is good chance that user will have to pay the visit to the grocery store.
+      To expand functionality app offers user an additional way to gather inspirations for dishes. If the presented list is not satysfying, user can fetch other recipes from external database via Edamam Recipes API. This query will include users dietary preferences and list of products in the fridge, however recipes can also include other products, so there is good chance that user will have to pay the visit to the grocery store.
       To avoid losing information on reloads, the list of products in the fridge and list of recipes from API are stored in browser's local storage. At any moment user can clear all of the information with a press of a button.
       </p>
       <h3>Technology used</h3>
