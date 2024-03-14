@@ -11,11 +11,11 @@ function RecipesFromApi(props) {
         <Row>
         <Image src={acknowledgement} width={50} height={50} alt="acknowledgement Edamam API" />
         </Row>
-        <Row>
+        <Container className="d-flex justify-content-center">
         {recipes.map((recipe) => {
             return <ApiRecipe recipe={recipe} key={recipe.id} />
         })}
-        </Row>
+        </Container>
     </Container>
   )
 }
