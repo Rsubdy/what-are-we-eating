@@ -162,7 +162,7 @@ useEffect(()=>{
   return (
     <div>
       <main>
-      <h2>Recipes from products in your fridge:</h2>
+      <h2 className="text-center">Recipes from products in your fridge:</h2>
         {<div>
           <RecipesList recipes={recipesFromLocalDb} />
         </div>}

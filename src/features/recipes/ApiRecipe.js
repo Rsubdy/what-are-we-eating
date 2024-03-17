@@ -11,7 +11,7 @@ function ApiRecipe(props) {
 
   return (
     <Container>
-        <Card style={{ width: '15rem' }}>
+        <Card style={{ width: '100%', height: '100%' }}>
           <Card.Body>
           <Card.Title style={{fontSize: '1.2rem'}}>
           {title}

@@ -9,13 +9,16 @@ function RecipesFromApi(props) {
     return (
     <Container>
         <Row>
+        <h2 className="text-center">Recipes from the web:</h2>
+        </Row>
+        <Row>
         <Image src={acknowledgement} width={50} height={50} alt="acknowledgement Edamam API" />
         </Row>
-        <Container className="d-flex">
-        {recipes.map((recipe) => {
-            return <Col className="col-1"><ApiRecipe recipe={recipe} key={recipe.id} /></Col>
-        })}
-        </Container>
+        <Row style={{flexWrap: 'wrap'}} className="g-0 p-0">
+            {recipes.map((recipe) => {
+                return <Col className="col-4 p-0 m-0" style={{height:'100%'}}><ApiRecipe recipe={recipe} key={recipe.id} /></Col>
+            })}
+        </Row>
     </Container>
   )
 }

@@ -54,9 +54,9 @@ function App() {
       </Navbar>
       </Row>
       <Row className="d-flex justify-content-center">
-        <main className="bg-white text-black border border-black border-5 rounded bg-opacity-75 w-50 p-3">
+        <Col md={100} lg={80} className="bg-white text-black border border-black border-5 rounded bg-opacity-75 p-3">
           <Outlet />
-        </main>
+        </Col>
       </Row>
       <Row className="sticky-bottom">
         <footer className="container-fluid d-flex justify-content-center pt-2 pb-2 bg-warning">
