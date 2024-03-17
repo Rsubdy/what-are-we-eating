@@ -29,7 +29,7 @@ function ListedProduct({product}) {
             <Image src={food} alt={name} className="img w-100"/>
           </Col>
           <Col className="col-5">
-            <h5>{name}</h5>
+            <h5 style={{textWrap: "pretty", overflowWrap: "break-word"}}>{name}</h5>
           </Col>
           <Col className="col-5 d-flex justify-content-center ml-3">
             <Row className="">

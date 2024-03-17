@@ -54,7 +54,7 @@ function App() {
       </Navbar>
       </Row>
       <Row className="d-flex justify-content-center">
-        <Col md={100} lg={80} className="bg-white text-black border border-black border-5 rounded bg-opacity-75 p-3">
+        <Col sm={12} lg={6} xl={6} className="bg-light text-black border border-black border-5 rounded bg-opacity-75 p-3">
           <Outlet />
         </Col>
       </Row>

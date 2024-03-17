@@ -9,7 +9,7 @@ function RecipesFromApi(props) {
     return (
     <Container>
         <Row>
-        <h2 className="text-center">Recipes from the web:</h2>
+        <h2 className="text-center">Inspirations from the web:</h2>
         </Row>
         <Row>
         <Image src={acknowledgement} width={50} height={50} alt="acknowledgement Edamam API" />

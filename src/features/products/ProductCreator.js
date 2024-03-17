@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import {Container, Button, ToggleButtonGroup} from 'react-bootstrap';
-import {useDispatch } from 'react-redux';
+import {useDispatch, useSelector } from 'react-redux';
 import { addProduct } from './productsSlice';
 import Product from '../products/Product';
+import Alert from '../../components/Alert/Alert';
+import { selectAllProducts } from './productsSlice';
 
 function ProductCreator() {
 
@@ -10,8 +12,10 @@ const [name, setName] = useState('');
 const [glutenfree, setGlutenfree] = useState(false);
 const [dairyfree, setDairyfree] = useState(false);
 const [vegetarian, setVegetarian] = useState(false);
+const [showAlert, setShowAlert] = useState(null);
 
 const dispatch = useDispatch();
+const allProducts = useSelector(selectAllProducts);
 
 const handleDietExclusion = (e) => {
     e.preventDefault();
@@ -37,25 +41,42 @@ const handleDietExclusion = (e) => {
     toggleDiet(diet);
 }
 
+const handleAlert = (message, type) => {
+    setShowAlert(<Alert message={message} alertType={type}/>)
+    setTimeout(()=> setShowAlert(null), 2500)
+}
+
+
 // constructor for new product constructor(name, image = food, unit = "item", diet = {glutenfree: false, vegetarian: false, dairyfree: false}, amount = 1)
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    if (name === ''){
-        alert("Please enter the name of the product!");
-    } else {
-    const newProduct = JSON.stringify(new Product({name: name, diet: {glutenfree: glutenfree, dairyfree: dairyfree, vegetarian: vegetarian}}));
-    dispatch(addProduct(newProduct));
+    const resetForm = () => {
     setName('');
     setDairyfree(false);
     setGlutenfree(false);
     setVegetarian(false);
+    };
+
+    if (name === ''){
+        handleAlert("Enter the name of the product!", "info");
+    } else {
+    if (allProducts.find((product)=>product.name.toLowerCase() === name.toLowerCase())){
+        handleAlert(`${name} is already in the product list!`, "danger");
+        resetForm();}
+        else {
+        const newProduct = JSON.stringify(new Product({name: name, diet: {glutenfree: glutenfree, dairyfree: dairyfree, vegetarian: vegetarian}}));
+        dispatch(addProduct(newProduct));
+        handleAlert(`${name} added to the product list!`, "success");
+        resetForm();
+        }
     }
 }
 
 const handleChange = (e) => {
     setName(e.target.value)
 }
+
 
   return (
     <Container>
@@ -68,6 +89,7 @@ const handleChange = (e) => {
                 <Button variant="btn btn-success btn-sm" className={vegetarian ? "" : "opacity-50"}  dietname='vegetarian' onClick={handleDietExclusion}>Vegetarian</Button>
             </ToggleButtonGroup>
             <Button type="submit" className="btn btn-light">Add product</Button>
+            {showAlert && showAlert}
         </form>
     </Container>
   )
