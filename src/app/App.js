@@ -58,10 +58,10 @@ function App() {
           <Outlet />
         </Col>
       </Row>
-      <Row className="sticky-bottom">
-        <footer className="container-fluid d-flex justify-content-center pt-2 pb-2 bg-warning">
-          <Button variant="danger" className="btn btn-large w-25 border-black border-4" onClick={handleOffcanvas}>
-              <Image src={trash} width="25" height="25" />
+      <Row className="sticky-bottom position-fixed bottom-30 start-30 d-inline">
+        <footer className="container-fluid d-inline pt-2 pb-2 bg-warning">
+          <Button variant="danger" className="btn btn-large rounded-pill border-black border-4 text-black fw-bold" onClick={handleOffcanvas}>
+              Clear all <Image src={trash} width="25" height="25" />
           </Button>
         <>
           <Offcanvas show={offcanvas} onHide={handleOffcanvas} placement="bottom">
@@ -73,6 +73,9 @@ function App() {
             <Button variant="btn btn-danger" onClick={()=>handleClearPreferences()}><strong>Yup! Clear all!</strong></Button>
           </Offcanvas.Body>
           </Offcanvas>
+          <Row>
+          <p className="d-block text-black fw-bold">©Robert Subdysiak 2024</p>
+          </Row>
         </>
         </footer>
       </Row>
