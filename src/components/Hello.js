@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import DietSelection from '../features/diets/DietSelection';
 import { Container, Button, Collapse, Image, Row, Col } from 'react-bootstrap';
 import fridgeStocked from '../img/fridgeStocked.png'
@@ -7,12 +7,22 @@ function Hello() {
 const [helloVisibility, setHelloVisibility] = useState(true);
 const [dietVisibility, setDietVisibility] = useState(false);
 
+
 const toggleHello = () => {
   setHelloVisibility(false);
   setDietVisibility(true);
+  localStorage.setItem('helloVisibility', 'clicked');
 }
 
-  return (
+
+useEffect(()=>{
+  const helloWasClicked = localStorage.getItem('helloVisibility');
+  if (helloWasClicked){
+    setHelloVisibility(false);
+    setDietVisibility(true)}
+}, [])
+
+return (
     <Container className="d-grid justify-content-center">
       <Collapse in={helloVisibility}>
         <div id="hello-collapse" aria-expanded={helloVisibility}>
