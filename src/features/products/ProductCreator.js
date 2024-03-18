@@ -62,7 +62,7 @@ const handleSubmit = (e) => {
         handleAlert("Enter the name of the product!", "info");
     } else {
     if (allProducts.find((product)=>product.name.toLowerCase() === name.toLowerCase())){
-        handleAlert(`${name} is already in the product list!`, "danger");
+        handleAlert(`${name} is already on the product list!`, "danger");
         resetForm();}
         else {
         const newProduct = JSON.stringify(new Product({name: name, diet: {glutenfree: glutenfree, dairyfree: dairyfree, vegetarian: vegetarian}}));

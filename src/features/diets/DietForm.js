@@ -83,23 +83,23 @@ useEffect(()=>{
 }, [setSummary, createSummary, storePreferences])
 
 const dietDemoInfo = (
-    <Popover id="dietInfos">
+    <Popover id="dietInfos" show="show">
           <Popover.Header as="h3">This is only a portfolio project with few diets.</Popover.Header>
             <Popover.Body>
               Other diet preferences could be easily introduced!
             </Popover.Body>
             </Popover>
   );
-  
+
+
+const diets = ['glutenfree', 'dairyfree', 'vegetarian'];
 
     return (
         <Container className="d-grid justify-content-center">
             <div className="row d-grid justify-content-center">
             <ToggleButtonGroup type="checkbox" className="d-block">
-                <DietButton dietName='glutenfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-                <DietButton dietName='dairyfree' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-                <DietButton dietName='vegetarian' storePreferences={storePreferences} onClick={handleDietExclusion}/>
-                <OverlayTrigger trigger="click" placement="right" overlay={dietDemoInfo}><Button variant="btn btn-info text-white fw-bold">?</Button></OverlayTrigger>
+                {diets.map(diet => <DietButton dietName={diet} storePreferences={storePreferences} onClick={handleDietExclusion} id={`${diet}-button`}/>)}
+                <OverlayTrigger trigger="focus" placement="right" overlay={dietDemoInfo}><Button variant="btn btn-info text-white fw-bold">?</Button></OverlayTrigger>
             </ToggleButtonGroup>
             </div>
             <div className="row d-grid justify-content-center">
