@@ -46,6 +46,7 @@
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "redux-mock-store": "^1.5.4",
+    "typescript": "^5.4.3",
     "webpack-cli": "^5.1.4"
   }
 }
