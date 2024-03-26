@@ -7,6 +7,7 @@ import { getFridgeFromLocalstorage, selectAllFridgeProducts } from '../features/
 import { getExcludedDiets } from '../features/diets/dietPreferencesSlice';
 import RecipesFromApi from '../features/recipes/RecipesFromApi';
 import {Button} from 'react-bootstrap';
+import ModalAlert from './ModalAlert/ModalAlert';
 
 function Recipes() {
   
@@ -22,7 +23,9 @@ function Recipes() {
   const allApiRecipes = useSelector(selectAllApiRecipes);
   let excludedDiets = useSelector(getExcludedDiets);
   let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
-
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertTitle, setAlertTitle] = useState('');
+  const [alertMessage, setAlertMessage] = useState('');
   //helper functions: 
 
 // rewriting diet names for query convention:
@@ -76,8 +79,11 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
     try {
       let ingredients = fridgeProductsQuery();
       if (ingredients.length === 0) {
-        setHeadline('No products in your fridge!');
-        throw new Error('No products in your fridge!')}
+        setAlertTitle('No products in your fridge!');
+        setAlertMessage('Add some products and try again.');
+        setShowAlert(true);
+
+      }
         
         else {
           let appID = 'dea6581f';
@@ -87,7 +93,9 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
           const response = await fetch(url);
           let payload = [];
           if (response.ok){
-            alert('New recipes coming your way!')
+            setAlertTitle('New recipes coming your way!');
+            setAlertMessage('Fetching inspirations to use your ingredients with some additional condiments!');
+            setShowAlert(true);
             let json = await response.json();
             let recipesArray = await json.hits;
             for (let i=0; i<5; i++){
@@ -107,11 +115,9 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
           }
         }
     } catch (error) {
-      if (error.message){
-        alert(error);
-      } else {
-      alert("Hmmm... Sometimes the web fails... Try again later!")}
-
+      setAlertTitle('Hmmm... Something has gone wrong...');
+      setAlertMessage('Maybe clear your settings and try again?');
+      setShowAlert(true);
      setApiRecipesLoaded(false); 
     }
   }
@@ -162,6 +168,7 @@ useEffect(()=>{
   return (
     <div>
       <main>
+      {showAlert && <ModalAlert show={showAlert} title={alertTitle} message={alertMessage}/>}
       <h2 className="text-center">Recipes from products in your fridge:</h2>
         {<div>
           <RecipesList recipes={recipesFromLocalDb} />
