@@ -19,7 +19,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/what-are-we-eating" element={<App />}>
+          <Route path="/" element={<App />}>
             <Route path="/" element={<Hello />} />
             <Route path="/fridge" element={<Fridge />}>
               <Route path="/fridge/productslist" element={<ProductsList />} />
@@ -27,6 +27,7 @@ root.render(
             <Route path="/recipes" element={<Recipes />}></Route>
             <Route path="/about" element={<About />} />
             <Route path="*" element={<h1>Page Not Found</h1>} />
+            <Route path="/what-are-we-eating" element={<Hello />} />
           </Route>
         </Routes>
       </BrowserRouter>
