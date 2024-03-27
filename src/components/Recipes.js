@@ -21,8 +21,8 @@ function Recipes() {
   const [apiRecipesLoaded, setApiRecipesLoaded] = useState(false);
   const [headline, setHeadline] = useState();
   const allApiRecipes = useSelector(selectAllApiRecipes);
-  let excludedDiets = useSelector(getExcludedDiets);
-  let localStorageApiRecipes = localStorage.getItem('recipesFromApi');
+  const excludedDiets = useSelector(getExcludedDiets);
+  const localStorageApiRecipes = localStorage.getItem('recipesFromApi');
   const [showAlert, setShowAlert] = useState(false);
   const [alertTitle, setAlertTitle] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
@@ -86,8 +86,8 @@ const dietPreferences = rewriteDietNamesForQuery(excludedDiets);
       }
         
         else {
-          let appID = 'dea6581f';
-          let apiKey = '513e64bd34b3c29b478441b9681dd34e';
+          const appID = 'dea6581f';
+          const apiKey = '513e64bd34b3c29b478441b9681dd34e';
           let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${ingredients}&app_id=${appID}&app_key=${apiKey}&random=true&field=ingredientLines&field=label&field=url`
           dietPreferences.length !== 0 && (url += '&health='+dietPreferences.join('&health='));
           const response = await fetch(url);

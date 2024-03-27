@@ -7,7 +7,7 @@ import fridge from '../../img/fridge.png';
 function FridgeProduct({product}) {
     
     
-    let {name, id} = product;
+    const {name, id} = product;
     const dispatch = useDispatch();
 
     //Button handlers:

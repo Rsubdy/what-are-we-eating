@@ -1,18 +1,31 @@
 import React from 'react'
-import {Row, Image, ListGroup, ListGroupItem} from 'react-bootstrap';
+import {Image, ListGroup, ListGroupItem} from 'react-bootstrap';
 import acknowledgement from '../img/Edamam_Badge_White.svg';
 
 function About() {
+
+
   return (
     <div>
-      <h1 >This is a portfolio React.js project by Robert Subdysiak</h1>
+      <h2 >This is a portfolio React.js project by Robert Subdysiak</h2>
+      <br />
       <h3>Overview</h3>
       <p>
       This app helps user get recipes for dishes that can be prepared from the products in user's fridge.
-      It prompts user to first select diet preferences. They will affect displayed products and recipes to avoid alergens and other dietary restrictions, such as avoiding meat.
-      Following that step user can select products from the list and add them to the fridge.
+      <br />
+      <br />
+      Selected diet preferences will affect displayed products and recipes to avoid alergens and include other dietary restrictions, such as excluding animal products.
+      <br />
+      <br />
+      User can select products from the list and add them to the fridge as well as create custom product.
+      <br/>
+      <br />
       With the full list of products in the fridge user can proceed to the recipes list. The app contains some original recipes to simulate internal database of recipes. This is the preferred way to select them, as all of the products in the recipe have to be present in user's fridge.
-      To expand functionality app offers user an additional way to gather inspirations for dishes. If the presented list is not satysfying, user can fetch other recipes from external database via Edamam Recipes API. This query will include users dietary preferences and list of products in the fridge, however recipes can also include other products, so there is good chance that user will have to pay the visit to the grocery store.
+      <br />
+      <br />
+      The app also offers user an additional way to gather inspirations for the dishes. If the presented list of built-in recipes is not satysfying, user can fetch others from external database via Edamam Recipes API. The query will include user's dietary preferences (glutenfree, dairyfree, vegetarian or no restrictions) and list of products in the fridge. However, recipes can also include other products, so there is good chance that user will have to pay the visit to the grocery store. If interested, user can proceed to the detailed recipe via provided link to the website that displays it. The entire recipe cannot be presented in the app due to copyright reasons.
+      <br />
+      <br />
       To avoid losing information on reloads, the list of products in the fridge and list of recipes from API are stored in browser's local storage. At any moment user can clear all of the information with a press of a button.
       </p>
       <h3>Technology used</h3>
