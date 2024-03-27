@@ -43,7 +43,7 @@ const handleDietExclusion = (e) => {
 
 const handleAlert = (message, type) => {
     setShowAlert(<Alert message={message} alertType={type}/>)
-    setTimeout(()=> setShowAlert(null), 2500)
+    setTimeout(()=> setShowAlert(null), 4500)
 }
 
 
@@ -58,8 +58,13 @@ const handleSubmit = (e) => {
     setVegetarian(false);
     };
 
+    const regex = /^(?=.*[a-zA-Z])[a-zA-Z]+( [a-zA-Z]+)*$/
+
     if (name === ''){
         handleAlert("Enter the name of the product!", "info");
+    } else if (regex.test(name) === false) {
+        handleAlert(`${name} is not a valid name of the product! Please use only letters.`, "danger")
+        setName('');
     } else {
     if (allProducts.find((product)=>product.name.toLowerCase() === name.toLowerCase())){
         handleAlert(`${name} is already on the product list!`, "danger");
