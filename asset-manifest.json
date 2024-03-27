@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/what-are-we-eating/static/css/main.563373a9.css",
-    "main.js": "/what-are-we-eating/static/js/main.222e8045.js",
+    "main.js": "/what-are-we-eating/static/js/main.0d595ebe.js",
     "static/media/fridgeStocked.png": "/what-are-we-eating/static/media/fridgeStocked.95b4130e7f9545f12c55.png",
     "static/media/logo.png": "/what-are-we-eating/static/media/logo.e35b4af1f66f7d36635d.png",
     "static/media/recipeImg.png": "/what-are-we-eating/static/media/recipeImg.1bcaf7044ba9d6b66d37.png",
@@ -11,10 +11,10 @@
     "static/media/Edamam_Badge_White.svg": "/what-are-we-eating/static/media/Edamam_Badge_White.34806e3bbbb96339901cf7bb0e0d253f.svg",
     "index.html": "/what-are-we-eating/index.html",
     "main.563373a9.css.map": "/what-are-we-eating/static/css/main.563373a9.css.map",
-    "main.222e8045.js.map": "/what-are-we-eating/static/js/main.222e8045.js.map"
+    "main.0d595ebe.js.map": "/what-are-we-eating/static/js/main.0d595ebe.js.map"
   },
   "entrypoints": [
     "static/css/main.563373a9.css",
-    "static/js/main.222e8045.js"
+    "static/js/main.0d595ebe.js"
   ]
 }
